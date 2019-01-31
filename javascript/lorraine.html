@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lorraine</title>
+</head>
+<body>
+<h1>Hello World</h1>
+
+<ul id="ul01">
+	<li>item one</li>
+	<li>item two</li>
+	<li>item three</li>
+</ul>
+<button id="btnAppend">Append</button>
+<br><br>
+
+<input id="in01"></input> <br>
+<button id="btn01">Push Me</button>
+
+<script>
+	
+console.log("Hello World from Lorraine.html");
+
+document.getElementById("btn01").addEventListener("click", onClick);
+document.getElementById("btn01").addEventListener("mouseover", onMouseOver);
+document.getElementById("btnAppend").addEventListener("click", functionAppend);
+
+function onClick() {
+	console.log("In onClick ");
+	var s = document.getElementById("in01").value;
+	var s1 = Number(s) + 1;
+	console.log(s1);
+}
+
+function onMouseOver() {
+	console.log("In onMouseOver ");
+}
+
+function functionAppend() {
+	var ul = document.getElementById("ul01");
+
+  	var li = document.createElement("li");
+
+ 	li.appendChild(document.createTextNode("Element 4"));
+
+ 	ul.appendChild(li);
+ }
+
+</script>
+</body>
+</html>

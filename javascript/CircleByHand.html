@@ -1,0 +1,120 @@
+
+<svg height="300" width="300">
+    <image xlink:href="LorraineonRamp.JPG" x="0" y="0" height="300px" width="300px"/>
+	<circle id="circle1" cx="50" cy="50" r="10" stroke="black" width="3" fill="red" onClick="circleClick(evt)" onMouseOver="circleOver(evt)"/>
+	<circle id="circle2" cx="100" cy="100" r="10" stroke="black" width="3" fill="red"/>
+    <circle id="orbit1" cx="50" cy="150" r="5" stroke="black" width="3" fill="blue" 
+        ox="100" oy="100" or="50" oi="1" on="100"/>
+</svg>
+
+<script>
+console.log("Hello World");
+
+var lfsVar = [{
+    "Name": "Jay",
+    "age": 25,
+    "weight": 58,
+	"content": [1,2,3]
+}, {
+    "Name": "Raj",
+    "age": 27,
+    "weight": 64
+}, {
+    "Name": "Roy",
+    "age": 21,
+    "weight": 55
+}];
+
+    var timerFunction = null;
+
+    function startAnimation() {
+        if(timerFunction == null) {
+            timerFunction = setInterval(animate, 20);
+        }
+    }
+
+    function stopAnimation() {
+        if(timerFunction != null){
+            clearInterval(timerFunction);
+            timerFunction = null;
+        }
+    }
+
+    function animate() {
+        var circle = document.getElementById("circle1");
+        var x = circle.getAttribute("cx");
+        var newX = 2 + parseInt(x);
+        if(newX > 300) {
+            newX = 1;
+        }
+
+        var y = circle.getAttribute("cy");
+        var newY = 2 + parseInt(y);
+        if(newY > 300) {
+            newY = 1;
+        }
+        circle.setAttribute("cx", newX);
+        circle.setAttribute("cy", newY);
+
+        orbit()
+    }
+	function circleClick(s) {
+		console.log("Click - The object is:",s);
+		console.log("x: "+s.clientX+" y:"+s.clientY);
+		console.log("path x: "+s.path[0].attributes.cx+" y:"+s.path[0].attributes.cy);
+		//alert("x: "+s.clientX+" y:"+s.clientY);
+	}
+
+	function circleOver(s) {
+		console.log("Over - The object is:",s);
+	}
+
+	function lfsPlay() {
+		console.log("lfsPlay");
+		console.log(lfsVar);
+		console.log(lfsVar[0].Name);
+		console.log(JSON.stringify(lfsVar));
+		lfsVar.forEach(function(entry) {
+			console.log('value: ' + entry);
+			console.log('       ' + entry.Name);
+
+		});
+	}
+
+	console.log("Good bye world");
+
+
+</script>
+
+<br/>
+<input type="button" value="Start Animation" onclick="startAnimation();">
+<input type="button" value="Stop Animation" onclick="stopAnimation();">
+<br/>
+<input type="button" value="Play" onclick="lfsPlay();">
+<input type="button" value="Orbit" onclick="orbit();">
+<script>
+
+    function orbit() {
+
+        var orbiter = document.getElementById("orbit1");
+        var ox = parseInt(orbiter.getAttribute("ox"));
+        var oy = parseInt(orbiter.getAttribute("oy"));
+        var or = parseInt(orbiter.getAttribute("or"));
+        var oi = parseInt(orbiter.getAttribute("oi"));
+        var on = parseInt(orbiter.getAttribute("on"));
+
+        var t = 2 * Math.PI * oi / on;
+        var x = Math.round(ox + or * Math.cos(t));
+        var y = Math.round(oy + or * Math.sin(t));
+
+        oi = oi + 1;
+        if (oi > on) oi = 1;
+
+        orbiter.setAttribute("oi", oi);
+        orbiter.setAttribute("cx", x);
+        orbiter.setAttribute("cy", y);
+    }
+
+    orbit()
+    
+    </script>

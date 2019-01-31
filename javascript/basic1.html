@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hello World</title>
+</head>
+<body>
+<h1 id="h101">Hello World from HTML</h1>
+<input id="in01"/> <br>
+<br>
+<button id="bt01">Push Me</button>
+<!-- 
+
+		--- Working with Arrays
+
+ -->
+<h1>Working with Arrays</h1>
+<input id="inAr"/>
+<br> <br>
+<button id="arAdd">Add</button>
+<button id="arShow">Show</button>
+<button id="arTotal">Total</button>
+<button id="arClear">Clear</button>
+<br> <br>
+<div id="arMsg">Message Area</div>
+<!-- 
+
+		--- Working with Dictionaries / Objects
+
+ -->
+<h1>Working with Dictionaries</h1>
+<input id="inDic"/>
+<br> <br>
+<button id="dicLookup">Lookup</button>
+<br> <br>
+<div id="dicMsg">Message Area</div>
+<h1>That's it folks v1</h1>
+
+
+<script>
+
+console.log("Hello World from inline");
+document.getElementById("bt01").addEventListener("click", onClick);
+
+function onClick(e) {
+	console.log("In onClick", e);
+	let s = document.getElementById("in01").value;
+	console.log(s);
+}
+/*
+		--- Working with Arrays ---
+*/
+const arMsgDiv = document.getElementById("arMsg");
+let ar = [];
+document.getElementById("arAdd").addEventListener("click", onArADD);
+document.getElementById("arShow").addEventListener("click", onArShow);
+document.getElementById("arTotal").addEventListener("click", onArTotal);
+document.getElementById("arClear").addEventListener("click", onArClear);
+
+
+function onArADD(e) {
+	// console.log("In onArADD", e);
+	let s = document.getElementById("inAr").value;
+	if (s) {
+		if (isNaN(s)) {
+			arMsg(s + " is not a number.");
+		} else {
+			ar.push(Number(s));
+			arMsg(s + ' added to the array.');
+		}
+	}
+}
+
+function onArShow(e) {
+	// console.log("In onArShow", e);
+	let s = '';
+	ar.forEach(function(item, i){
+		// console.log('forEach:',item,i)
+		s += item + ',';
+	});
+	arMsg(s.slice(0,-1));
+}
+
+function onArTotal(e) {
+	// console.log("In onArTotal", e);
+	let t = 0;
+	ar.forEach(function(item, i) {
+		t += item;
+	});
+	arMsg('The total so far is: ' + t);
+}
+
+function onArClear(e) {
+	// console.log("In onArClear", e);
+	ar = [];
+	arMsg('All clear.');
+}
+
+function arMsg(m) {
+	arMsgDiv.textContent = m;
+}
+
+/*
+		--- Working with Dictionaries ---
+*/
+const dicMsgDiv = document.getElementById("dicMsg");
+let dic = {'ab': 'Alberta', 'bc': 'British Columbia', 'sk': 'Saskatchewan'};
+document.getElementById("dicLookup").addEventListener("click", onDicLookup);
+
+function onDicLookup(e) {
+	let s = document.getElementById("inDic").value;
+	// console.log("In onDicLookup", e);
+	dicMsg(dic[s]);
+}
+
+function dicMsg(m) {
+	dicMsgDiv.textContent = m;
+}
+
+{
+	let a = 'a value';
+	const b = 'b value';
+	var c = 'c value';
+}
+
+{
+	// console.log("The value of a is:", a); // Only with in it's block
+	// console.log("The value of a is:", b); // Only with in it's block
+	console.log("The value of a is:", c); // This is why we don't use var anymore...
+}
+
+</script>
+<!-- <script src="basic1.js"/> -->
+</body>
+</html>

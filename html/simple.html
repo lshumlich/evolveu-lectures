@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="225894951024-38kiuv9710kuet526qqgaui0vqr19no7.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+	<title>Simple html 2</title>
+	<style>
+body {
+	color:black;
+	background: #f0f0f0;
+}
+.centerCard {
+    margin: auto;
+    /*width: 90%;*/
+    max-width: 400px;
+    /*max-height: 300px;*/
+    min-height: 450px;
+	border-spacing: 10px;
+	/*min-height: 50px;*/
+    padding: 10px;
+    /*border: solid;*/
+	text-align: center;
+	background: white;
+}
+.divcenter {
+    margin: auto;
+    /*border: solid;*/
+    max-width: 120px;
+}
+
+	</style>
+</head>
+<body>
+	<br>
+	<br>
+<div class="centerCard">
+	<br>
+	<br>
+	<img src="favicon.ico" alt="EvolveU" style="width:75px;height:75px;">
+	<br>
+	<h1>EvolveU</h1>
+	<br>
+	<h4>Self Evaluation</h4>
+	<br>
+	<div class="divcenter">
+    	<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+    </div>
+    <br>
+    <br>
+    <checkbox/>
+    <input type="checkbox" name="remember"> Remember me for 30 days<br>
+<div>
+    <script>
+      function onSignIn(googleUser) {
+        // Useful data for your client-side scripts:
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log('Full Name: ' + profile.getName());
+        console.log('Given Name: ' + profile.getGivenName());
+        console.log('Family Name: ' + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+      }
+    </script>
+
+</body>
+</html>
+

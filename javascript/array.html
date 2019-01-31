@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Array Play</title>
+	<script type="text/javascript" src="array.js" defer></script>
+
+<style type="text/css">
+
+.center90 {
+    margin: auto;
+    width: 90%;
+	border-spacing: 0px;
+	min-height: 50px;
+    /*padding: 10px;*/
+    border: solid;
+	text-align: center;
+}
+
+.stacked {
+	border: solid;
+	float: left;
+	min-width: 50px;
+	/*min-height: 150px;*/
+	margin: 5px 5px 5px 5px;
+}
+
+.client {
+	border: solid;
+	float: left;
+	min-width: 100px;
+	min-height: 100px;
+	/*min-height: 150px;*/
+	margin: 5px 5px 5px 5px;
+}
+
+.stacked50 {
+	border: solid;
+	float: left;
+	width: 49.4%;
+	min-height: 150px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.clear {
+	clear: both;
+}
+
+</style>	
+
+</head>
+<body>
+
+	<h1>Hello World</h1>
+
+	<div style="border: solid;">
+		<textarea id="top" rows=10 style="width: 99.4%"> </textarea>
+	</div>
+
+	<div style="clear: both;"> This is a clear</div>
+
+	<div class="center90">
+		<div class="stacked50"> asdf Stack 50 </div>
+		<div class="stacked50"> asdf Stack 50 </div>
+	</div>
+
+	<div class="clear"> </div>
+
+	<div class="center90">
+		<br><br>Bottom
+	</div>
+	<button id="push"> Push </button>
+
+	<h1> Play with div </h1>
+	<div class="center90">
+		<div class="stacked"> asdf </div>
+		<div> asdf </div>
+		<div> asdf </div>
+		<div> asdf </div>
+		<div> asdf </div>
+		this is in the outer div.
+	</div>
+
+	<div class="clear"> </div>
+
+	<button id="addDiv">Add Div</button>
+	
+	<div id="clientDiv"> </div>
+
+	<div class="clear"> </div>
+
+	<h1>Array and Objects</h1>
+	<button id="jsonButton">JSON</button>
+	<button id="arrayButton">Array</button>
+	<button id="objectButton">Object</button>
+
+
+</body>
+</html>

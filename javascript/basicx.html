@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Play with JavaScript</title>
+	<script type="text/javascript" src="basicx.js" defer></script>
+<style>
+.bf {
+    float:left;
+    border: solid;
+}
+
+h1 {
+    color: maroon;
+    margin-left: 40px;
+} 
+</style>
+</head>
+
+<body>
+	<h1>Hello World</h1>
+	<button>Push Me</button>
+	<button onclick="this.innerHTML = Date()">The time is?</button>
+	<button onmouseover="myMouseOver()">Mouse Over</button> 
+	<button onclick="myClear()">Clear</button> 
+	<button onclick="myAdd()">Add</button> 
+	<div id="mydiv"> This is a new div</div>
+	<input id="myInput1" type="text"> </input>
+	<input id="myInput2" type="text"> </input>
+	<input id="myInput3" type="text"> </input>
+
+	<h1>Hello World</h1>
+	<div>
+		outer div
+		<div> inner div </div>
+		<div> inner div </div>
+		<div> inner div </div>
+		<div> inner div </div>
+		outer div
+	</div>
+
+
+	<div>
+		outer div
+		<div class="bf"> inner div </div>
+		<div class="bf"> inner div </div>
+		<div class="bf"> inner div </div>
+		<div class="bf"> inner div </div>
+		outer div
+	</div>
+
+	<div>
+		outer div
+		<div> inner div </div>
+		<div> inner div </div>
+		<div> inner div </div>
+		<div> inner div </div>
+		outer div
+	</div>
+
+	<svg>
+		 <rect width="400" height="100" style="fill:rgb(0,0,255);stroke-width:10;stroke:rgb(0,0,0)" />
+		 <circle onmouseover="circleOver(event)" cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
+	</svg>
+
+</body>
+<script>
+	console.log("Hello World from inline JavaScript");
+</script>
+</html>
