@@ -1,0 +1,37 @@
+version: '3.6'
+
+services:
+
+  # Backend API
+  my-api:
+    container_name: backend
+    # image: node:8.11.1
+    # looks for a Dockerfile to build
+    build: ./
+    command: npm start
+    working_dir: /src
+    environment:
+      POSTGRES_URI: postgres://larry:password@postgres:5432/my-api
+      POSTGRES_USER: larry
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: larry
+      POSTGRES_HOST: postgres
+    links:
+      - postgres
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/home/larry/code/linked-lists
+
+  # Postgres
+  postgres:
+    container_name: postgres
+    environment:
+      POSTGRES_USER: larry
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: larry
+      POSTGRES_HOST: postgres
+    # image: postgres
+    build: ./docker-sql
+    ports:
+      - "5432:5432"
