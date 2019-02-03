@@ -1,7 +1,7 @@
 import ll from "./LinkedList";
 
 test('Test the basic LinkedList: ', () => {
-	console.log('Hello World');
+	// console.log('Hello World');
 	let llist = new ll.LinkedList('First', 10.00);
 	expect(llist.head.subject).toBe('First');
 	expect(llist.head.amount).toBe(10.00);

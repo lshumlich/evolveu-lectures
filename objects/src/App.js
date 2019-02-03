@@ -8,6 +8,7 @@ import thumbs5 from './icons/020-like-5.png';
 import './App.css';
 import LinkedListComp from "./components/LinkedListComp.js"
 import StuffComp from "./components/StuffComp.js"
+import MathComp from "./components/MathComp.js"
 
 class App extends Component {
   constructor() {
@@ -56,6 +57,11 @@ class App extends Component {
             </tbody>
           </table>
         </div>
+    } else if (this.state.compToShow === 'math') {
+      toShow = 
+        <div> 
+          <MathComp/>
+        </div>
     } else {
       toShow = 
         <header className="App-header">
@@ -81,7 +87,7 @@ class App extends Component {
         <img src={thumbs1} className="lfs-logo" name="logo" onClick={this.onIcon} alt="logo" />
         <img src={thumbs2} className="lfs-logo" name="one" onClick={this.onIcon} alt="logo" />
         <img src={thumbs3} className="lfs-logo" name="table" onClick={this.onIcon} alt="logo" />
-        <img src={thumbs4} className="lfs-logo" name="logo" onClick={this.onIcon} alt="logo" />
+        <img src={thumbs4} className="lfs-logo" name="math" onClick={this.onIcon} alt="logo" />
         <img src={thumbs5} className="lfs-logo" name="stuff" onClick={this.onIcon} alt="logo" />
         <div> {toShow} </div>
       </div>
