@@ -81,6 +81,11 @@ body {
 </head>
 <body>
 
+<!-- 
+	normalDiv is defined as a class above inside <style> with a "."
+	in front.  used as a class so you can use that style over and over again
+ -->
+
 <div id="domDiv" class="normalDiv">
 	<h1>Basic DOM</h1>
 	<ol id="list01"> This is a list of stuff
@@ -120,7 +125,7 @@ body {
 	document.getElementById("domAdd").addEventListener("click", onDomAdd);
 
 	function onDomDivClick(e) {
-		// console.log("onClick", e);
+		console.log("onClick", e);
 		// console.log(e.target);
 		// console.log(e.target.className);
 		// console.log("textContent:",e.target.textContent);

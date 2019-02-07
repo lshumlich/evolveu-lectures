@@ -75,8 +75,13 @@ function onArShow(e) {
 	let s = '';
 	ar.forEach(function(item, i){
 		// console.log('forEach:',item,i)
+		// in this case, the s string (can use array functions on strings)
+		// will have a comma after the last item
 		s += item + ',';
 	});
+	// the -1 will do the same as s.length-1 (the minus starts from the last
+	// element; -1 will drop the last item - because you don't want
+	// a comma displaying after the last element)
 	arMsg(s.slice(0,-1));
 }
 
@@ -103,13 +108,23 @@ function arMsg(m) {
 		--- Working with Dictionaries ---
 */
 const dicMsgDiv = document.getElementById("dicMsg");
-let dic = {'ab': 'Alberta', 'bc': 'British Columbia', 'sk': 'Saskatchewan'};
+let dic = {
+	'ab': 'Alberta', 
+	'bc': 'British Columbia', 
+	'sk': 'Saskatchewan'
+};
 document.getElementById("dicLookup").addEventListener("click", onDicLookup);
 
 function onDicLookup(e) {
 	let s = document.getElementById("inDic").value;
 	// console.log("In onDicLookup", e);
-	dicMsg(dic[s]);
+	let a = dic[s];
+	if (a) {
+		dicMsg(a);
+	} else {
+		dicMsg("Entry not valid");
+	}
+	
 }
 
 function dicMsg(m) {
