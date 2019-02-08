@@ -3,12 +3,26 @@
 <head>
 	<title>DOM Exercise</title>
 
+<!-- Inline CSS starts with the tag <style> -->
+<!-- The <style> tag goes inside the <head>, so at the end will be -->
+<!-- a </style> and an </head> tag -->
+
 <style>
+
+/*The 'body' below is a component of CSS because it is within the <style>*/
+/*tag and doesn't have <> around it.  'body' in this case is a parent and lower */
+/*elements (children) can override the body styles*/
 
 body {
 	color:black;
 	background: #f0f0f0;
 }
+
+/*the '.' in front of normalDiv is creating a class.  This particular class */
+/*normalDiv is the main (top) box in the exercise*/
+/*the box can be shrunk while shrinking the screen, but only to a minimum size*/
+/*and will stay as 40% of the screen*/
+/* the border: solid makes a solid line around the box; */
 
 .normalDiv {
 	border: solid;
@@ -69,7 +83,7 @@ body {
 .card:hover {
 	/*background: blue; */
 	/*background: #f0f0f0;*/
-	background: rgba(240,240,240,0.7);
+	background: rgba(0,0,255,0.3);
 }
 
 .card:active { 
@@ -79,12 +93,24 @@ body {
 </style>
 
 </head>
+
+<!-- header is done and now are in the body component -->
+<!-- the <script> tag goes inside the body component.  There is some  -->
+<!-- debate about this -->
+
 <body>
 
 <!-- 
 	normalDiv is defined as a class above inside <style> with a "."
 	in front.  used as a class so you can use that style over and over again
  -->
+
+ <!-- within this 'div' element, we have a tree.  Div is a group element, -->
+ <!-- so you can have elements within this element.  Two of the  -->
+ <!-- li elements have a="asdf" or a="asd" in front of the  -->
+ <!-- line item description, but they are just a variable in case -->
+ <!-- needed to be used for something; just shows you can -->
+ <!-- have this.  Then two buttons below the <ol> (ordered list) -->
 
 <div id="domDiv" class="normalDiv">
 	<h1>Basic DOM</h1>
@@ -104,15 +130,15 @@ body {
 </div>
 
 <div class="rightCard">
-	<h1> Right Side </h1>
+	<h1> Right Side One </h1>
 </div>
 
 <div class="rightCard">
-	<h1> Right Side </h1>
+	<h1> Right Side Two </h1>
 </div>
 
 <div class="rightCard">
-	<h1> Right Side </h1>
+	<h1> Right Side Three </h1>
 </div>
 
 <script>
@@ -144,6 +170,8 @@ body {
 
 	}
 
+	// the <click> will just add "Another Item" to the list (ie. appendChild)
+	
 	function onDomAdd(e) {
 		console.log("onDomAdd", e);
 		const list = document.getElementById("list01");
@@ -158,11 +186,16 @@ body {
 */
 
 	let count = 1;
+	// this console.log will just print to console every time a refresh is done
 	console.log('Hello World');
 	document.getElementById("leftCard").addEventListener("click", onClick);
 	// document.addEventListener("click", onClick);
 	// document.getElementById("leftCard").appendChild(newDiv());
 	
+	// if you click anywhere in the left card (that isn't a button), it
+	// goes to this onClick function....but all lines are commented out so
+	// nothing happends
+
 	function onClick(e) {
 		// console.log("onClick", e);
 		// console.log(e.target);
@@ -172,23 +205,25 @@ body {
 	}
 
 	function onAddBefore(e) {
-		// console.log("onAddBefore");
+		console.log("onAddBefore, just e",e);
+		console.log("onAddBefore, e.target",e.target);
+		console.log("onAddBefore, e.target.parentElement",e.target.parentElement);
 		let node = e.target.parentElement;
-		// console.log(parent);
+
 		node.parentElement.insertBefore(newDiv(),node);
 	}
 
 	function onAddAfter(e) {
-		// console.log("onAddBefore");
+		// console.log("onAddAfter");
 		let node = e.target.parentElement;
 		// console.log(node);
-		node.parentNode.insertBefore(newDiv(), node.nextSibling);
+		node.parentElement.insertBefore(newDiv(), node.nextSibling);
 	}
 
 	function onDelete(e) {
 		// console.log("onDelete");
 		let node = e.target.parentElement;
-		node.parentNode.removeChild(node);
+		node.parentElement.removeChild(node);
 		// console.log(node);
 	}
 
@@ -199,24 +234,31 @@ body {
 	function newDiv() {
 		var div = document.createElement("div");
 		div.className = "card";
-		div.innerHTML = "Card " + count++;
+		// when just setting text, use .textContent instead of innerHTML
+		// div.innerHTML = "Card " + count++;
+		div.textContent = "Card " + count++;
+		// this one just is a made up attribute
 		div.lfsRef = "Larry Shumlich";
 
 		var before = document.createElement("button");
-		before.innerHTML = "Add Before";
+		before.textContent = "Add Before";
+		// before.innerHTML = "Add Before";
 		before.addEventListener("click", onAddBefore);
 
 		var after = document.createElement("button");
-		after.innerHTML = "Add After";
+		after.textContent = "Add After";
+		// after.innerHTML = "Add After";
 		after.addEventListener("click", onAddAfter);
 
 		var del = document.createElement("button");
-		del.innerHTML = "Delete";
+		del.textContent = "Delete";
+		// del.innerHTML = "Delete";
 		del.addEventListener("click", onDelete);
 
 		div.appendChild(document.createElement("br"));
 		div.appendChild(document.createElement("br"));
 		div.appendChild(before);
+		// put a space between the before and after
 		div.appendChild(document.createTextNode(" "));
 		div.appendChild(after);
 		div.appendChild(document.createElement("br"));
