@@ -127,31 +127,45 @@
 //
 //objects
 //
-let person1 = {firstName:"John", lastName:"Doe", age:46};
-let person2 = {firstName:"Sarah", lastName:"Cruise", age:34};
-let myPeople = [person1, person2];
+{
+	p = console.log;
+	//
+	// Almost everthing in JavaScript is an oject (except a string)
+	// With string it works like you would think
+	//
+	p('---------------------- Objects -------------------');
+	let a = 'Name';
+	let b = a;
+	a = 'Lorraine';
+	p("a:", a);
+	p("b:", b);
+	
+	//
+	// Object values can be "Looked up" using dot notation or string lookups
+	//
+	let person = {firstName:"John", lastName:"Doe", age:46};
+	p("person.firstName:", person.firstName);
+	p("person['firstName']:", person['firstName']);
 
-console.log("objects,get 1st name of 2nd person", person2.firstName);
-console.log("objects,get last name of 1st person in myPeople array",
-	myPeople[0].lastName);
+	let person2 = person;
+	person2.firstName = "Who Ever";
+	p('--- after person = person2');
+	p("person.firstName:", person.firstName);
+	p("person['firstName']:", person['firstName']);
 
-	// //
-	// // Dictionary / Maps
-	// //
+	//
+	// Use an Object as a dictionary or map (what other languages call them
+	//
+	let cc = {
+		'yyc': 'Calgary',
+		'yeg': 'Edmonton',
+		'yxe': 'Saskatoon',
+		'ywg': 'Winnipeg',
+	};
 
-	// p('Dictionary:', dic);
+	p('We live in', cc['yyc']);
 
-	// p('Lookup' , dic[1], dic[2]);
-
-	// dic[4] = 'four';
-	// p('Lookup 4:', dic[4]);
-
-	// //
-	// // Class Object
-	// //
-
-	// class People{
-	// 	constructor(name, age) {}
-	// }
+	p(`Or event better yet, ${a} use to live near ${cc['ywg']}.`);
+}
 
 </script> 

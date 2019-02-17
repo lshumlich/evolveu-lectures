@@ -1,13 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Hello World</title>
+	<title>Basic</title>
 </head>
 <body>
 <h1 id="h101">Hello World from HTML</h1>
 <input id="in01"/> <br>
 <br>
 <button id="bt01">Push Me</button>
+<!-- 
+
+		--- Working with Taxes
+
+ -->
+
+<h1>Working with Tax</h1>
+Taxable Income <input id="inTax"/>
+<br> <br>
+<button id="taxCalc">Calc</button>
+<div id="taxMsgDiv">Message Area</div>
+<!-- 
+
+		--- Working with Taxes v2
+
+ -->
+
+<h1>Working with Tax V2</h1>
+Taxable Income <input id="inTaxv2"/>
+<br> <br>
+<button id="taxv2Calc">Calc</button>
+<div id="taxv2MsgDiv">Message Area</div>
 <!-- 
 
 		--- Working with Arrays
@@ -22,18 +44,21 @@
 <button id="arClear">Clear</button>
 <br> <br>
 <div id="arMsg">Message Area</div>
+
 <!-- 
 
 		--- Working with Dictionaries / Objects
 
  -->
+
 <h1>Working with Dictionaries</h1>
 <input id="inDic"/>
 <br> <br>
 <button id="dicLookup">Lookup</button>
 <br> <br>
 <div id="dicMsg">Message Area</div>
-<h1>That's it folks v1</h1>
+
+<h1>That's it folks for 100</h1>
 
 
 <script>
@@ -46,9 +71,97 @@ function onClick(e) {
 	let s = document.getElementById("in01").value;
 	console.log(s);
 }
+
+/*
+		--- Working with Taxes ---
+*/
+
+document.getElementById("taxCalc").addEventListener("click", function() {
+
+	// tl - TaxLevel, tr - TaxRate, ti - TaxInput, tv - Tax
+
+	const tl1 = 47630,	tr1 = .15;
+	const tl2 = 47629,	tr2 = .205;
+	const tl3 = 52408,	tr3 = .26;
+	const tl4 = 62704,	tr4 = .29;
+	const 				tr5 = .33;
+
+	let ti = Number(document.getElementById("inTax").value);
+	let tax = 0;
+	let v = 0; // Value in that level to calc tax on
+	let t = 0; // Tax at that level 
+
+	if (ti) {
+
+		v = (ti <= tl1 ? ti : tl1);
+		tax = v * tr1;
+		console.log('l1 value & tax:', v, tax);
+
+		if (ti > tl1) {
+			v = (ti <= (tl1 + tl2) ? (ti - tl1) : tl2);
+			t = v * tr2;
+			tax += t;
+			console.log('l2 value, l2 tax, total tax:', v, t, tax);
+		}
+
+		if (ti > (tl1 + tl2)) {
+			v = (ti <= (tl1 + tl2 + tl3) ? (ti - tl1 - tl2) : tl3);
+			t = v * tr3;
+			tax += t;
+			console.log('l3 value l3 tax, total tax:', v, t, tax);
+		}
+
+		if (ti > (tl1 + tl2 + tl3)) {
+			v = (ti <= (tl1 + tl2 + tl3 + tl4) ? (ti - tl1 - tl2 - tl3) : tl4);
+			t = v * tr4;
+			tax += t;
+			console.log('l4 value l4 tax, total tax:', v, t, tax);
+		}
+
+		if (ti > (tl1 + tl2 + tl3 + tl4)) {
+			v = (ti - tl1 - tl2 - tl3 - tl4);
+			t = v * tr5;
+			tax += t;
+			console.log('l5 value l5 tax, total tax:', v, t, tax);
+		}
+
+		taxMsg("Calc on:" + ti + " " + tax);
+	} else {
+		taxMsg("Not a valid number to calc taxs on.");
+	}
+});
+
+
+function taxMsg(m) {
+	taxMsgDiv.textContent = m;
+}
+
+/*
+		--- Working with Taxes V2 ---
+*/
+
+document.getElementById("taxv2Calc").addEventListener("click",onButtonTax);
+
+function onButtonTax() {
+	let percentage = [0.15, 0.205, 0.26, 0.29, 0.33];
+	let taxAmount = [0, 7145, 16908, 30535, 48719];
+	let incomeBraket = [0,47630, 95259, 147667, 210371] ;
+	let income = Number(document.getElementById("inTaxv2").value);
+	let i = 0;
+	let tax = 0;
+	while (income > incomeBraket[i]){
+		console.log("i=",i," income braket=", incomeBraket[i]);
+		i++;
+	}
+	i--;
+	tax = (income - incomeBraket[i]) * percentage[i] + taxAmount[i];
+	document.getElementById("taxv2MsgDiv").textContent = tax;	
+}
+
 /*
 		--- Working with Arrays ---
 */
+
 const arMsgDiv = document.getElementById("arMsg");
 let ar = [];
 document.getElementById("arAdd").addEventListener("click", onArADD);
