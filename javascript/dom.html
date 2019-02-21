@@ -146,26 +146,30 @@ body {
 		--- Basic DOM ---
 */
 	// document.getElementById("leftCard").appendChild(newDiv());
-	document.getElementById("domDiv").addEventListener("click", onDomDivClick);
-	document.getElementById("domShow").addEventListener("click", onDomShow);
-	document.getElementById("domAdd").addEventListener("click", onDomAdd);
-
-	function onDomDivClick(e) {
+	// the EventListener below is using an anonymous function instead of
+	// naming the function because it is only usesd in one place and not
+	// needed anywhere else
+	// 
+	document.getElementById("domDiv").addEventListener("click", function (e) {
 		console.log("onClick", e);
 		// console.log(e.target);
 		// console.log(e.target.className);
 		// console.log("textContent:",e.target.textContent);
 		// console.log(e.target.lfsRef);
-	}
+	});
+
+	document.getElementById("domShow").addEventListener("click", onDomShow);
+	document.getElementById("domAdd").addEventListener("click", onDomAdd);
 
 	function onDomShow(e) {
 		// console.log("onDomShow", e);
 		const el = document.getElementById("list01");
 		console.log("TextContent:",el.textContent);
+		console.log("-----------------");
 		const c = el.childNodes;
 		// console.log('Children:',c);
-		c.forEach(function(i){
-			console.log('  -', i);
+		c.forEach(function(currVal){
+			console.log(' currVal -', currVal);
 		})
 
 	}
