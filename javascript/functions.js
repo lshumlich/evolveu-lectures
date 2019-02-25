@@ -30,7 +30,7 @@ function myTestFunc() {
 
 myTestFunc();
 
-p = console.log;
+const p = console.log;
 /*
 	---------- Add numbers ----------
 */
