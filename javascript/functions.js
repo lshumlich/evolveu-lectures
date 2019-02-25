@@ -40,8 +40,8 @@ p = console.log;
 
 function mySum1(arr) {
 	let sum = 0;
-	for (v in arr) {
-		sum += arr[v];
+	for (i in arr) {
+		sum += arr[i];
 	}
 	return sum;
 }
@@ -74,7 +74,7 @@ p("mySum3 answer:", mySum3(numbers));
 	---------- String Search Function ----------
 */
 
-function look_for_string(sarr, look_for){
+function look_for_stringx(sarr, look_for){
 	let count = 0;
 	sarr.forEach(function (i) {
 		// p('--',i);
@@ -84,6 +84,20 @@ function look_for_string(sarr, look_for){
 			// p('---', look_for, 'found');
 		};
 	});
+	return count;
+}
+
+function look_for_string(sarr, look_for){
+	let count = 0;
+	for (let i = 0; i < sarr.length; i++) {
+	// sarr.forEach(function (i) {
+		// p('--',i);
+		// p(i.search(look_for));
+		if(sarr[i].search(look_for) >= 0){
+			count+=1;
+			// p('---', look_for, 'found');
+		};
+	};
 	return count;
 }
 
