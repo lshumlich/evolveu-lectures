@@ -31,6 +31,38 @@ function myTestFunc() {
 myTestFunc();
 
 p = console.log;
+/*
+	---------- Add numbers ----------
+*/
+
+function my_add(p1, p2, p3) {
+	const v = p1 + p2 + p3;
+	return v;
+}
+
+function my_add_xxx(p1, p2, p3) {
+	return p1 + p2 + p3;
+}
+
+const ans12 = my_add(1,2,3);
+console.log('my_add answer 1:', ans12);
+
+console.log('my_add answer 1:',my_add(2,22,222));
+
+/*
+	---------- email address ----------
+*/
+
+function my_email(fname, lname) {
+	const email = fname + '.' + lname + "@evolveu.com";
+	return email;
+}
+
+
+const ans14 = my_email('jane','smith');
+console.log('my_email answer 1:', ans14);
+
+console.log('my_email answer 1:',my_email('bill','jones'));
 
 /*
 	---------- Array Sum ----------
