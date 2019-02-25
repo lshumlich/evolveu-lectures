@@ -53,7 +53,9 @@ function onButtonClick(e) {
 	elem.textContent = newHeadingH1 + headingCounter;
 	document.body.appendChild(elem);
 	
-	//document.body.textContent = "\n";
+	p("Inside button click, the e parameter received is ",e);
+	p("and the target is ", e.target);
+	p("h2 heading information for attribute place = ", idH2.getAttribute("place"));
 	headingCounter += 1;
 }
 
@@ -76,10 +78,31 @@ function onHeading3Over(e) {
 }
 
 function onHeading4Leave(e) {
-	p("You mouse left on the heading4; inside onHeading4Leave function");
+	p("You mouse exited on the heading4; inside onHeading4Leave function");
 	if (idH4.textContent === string5) {
 		idH4.textContent = string6;
 	} else {
 		idH4.textContent = string5;
 	}
 }
+
+//appending a child (ie. append an item in a list)
+// Create a <li> node
+var node = document.createElement("LI");                 
+// Create a text node
+var textnode = document.createTextNode("Water");         
+// Append the text to <li>
+node.appendChild(textnode);                              
+// Append <li> to <ul> with id="myList"
+document.getElementById("myList").appendChild(node);
+
+
+
+//Insert a new <li> element before the first child element of an <ul> element:
+
+var newItem = document.createElement("LI");       // Create a <li> node
+var textnode = document.createTextNode("Water");  // Create a text node
+newItem.appendChild(textnode);                    // Append the text to <li>
+
+var list = document.getElementById("myList");    // Get the <ul> element to insert a new node
+list.insertBefore(newItem, list.childNodes[0]);  // Insert <li> before the first child of <ul>  
