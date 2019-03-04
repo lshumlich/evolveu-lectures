@@ -1,0 +1,25 @@
+
+body {
+	/*background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);*/
+	/*background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);*/
+ 	/*background: linear-gradient(#43C6AC, #F8FFAE);*/
+ 	background-image: linear-gradient(to top, #9795f0 0%, #fbc8d4 100%);
+ 	font-family: helvetica;
+}
+
+.clClient{
+	background: white;
+	border: solid;
+	width: 25%;
+	min-height: 60px;
+	margin: auto;
+	margin-top: 15px;
+	text-align: center;
+	padding: 50px;
+	border-radius: 10px;
+	padding: 10px;
+	/*margin: 20px;*/
+	box-shadow: 10px 10px 15px;
+}
+
+
