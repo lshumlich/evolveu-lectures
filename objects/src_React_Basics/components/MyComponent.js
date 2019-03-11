@@ -17,6 +17,12 @@ class MyComp extends React.Component {
 					<button onClick={this.onMyPushMe}>
 						My Push Me
 					</button>
+					<br/>
+					<input type="text"/>
+					<br/>
+					<input type="week"/>
+					<br/>
+					<input type="date"/>
 				</div>
 			)
 		}
