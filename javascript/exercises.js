@@ -6,8 +6,8 @@ console.log("Hello from exercises.js");
 // makeEmail();
 // makeTrain();
 // assertEquals$();
-makeEmailArr();
-
+// makeEmailArr();
+// makeEmailObj();
 
 /* * * * * * * * * * * * addNumbers
 	
@@ -150,6 +150,7 @@ function makeTrain() {
 */
 function assertEquals(p1, p2) {
 	if (p1 === p2) {
+		console.log('ok ->', p1);
 		return true;
 	}
 	console.log("*** the two values are not the same:");
@@ -191,3 +192,64 @@ function makeEmailArr() {
 	assertEquals('amy.jones@evolveu.ca', makeEmailArr(['amy','jones']));
 
 }
+
+
+/* * * * * * * * * * * * makeEmailObj
+/*	
+	Write the function that format an email based on an object / map
+*/
+
+function makeEmailObj() {
+
+	// Write the function after this comment ---
+	function makeEmailObj(arg) {
+		return `${arg.fname}.${arg['lname']}@evolveu.ca`;
+	}
+	// and before this comment ---
+
+	arrayLarry = {fname:'larry', lname:'shumlich'};
+	assertEquals('larry.shumlich@evolveu.ca', makeEmailObj(arrayLarry));
+	assertEquals('bill.smith@evolveu.ca', makeEmailObj({fname:'bill',lname:'smith'}));
+	assertEquals('amy.jones@evolveu.ca', makeEmailObj({fname:'amy',lname:'jones'}));
+
+}
+
+/* * * * * * * * * * * * makeEmailArrayObjs
+/*	
+	Write a function to loop through the data and call makeEmailObj
+	from the last exercise.
+*/
+
+function makeEmailArrayObjs() {
+	const data = 
+	{clients:
+		[
+			{fname:"Jane", lname:"Smith", balance:10},
+			{fname:"Liam", lname:"Henry", balance:1000},
+			{fname:"Emma", lname:"Jones", balance:1330},
+			{fname:"Olivia", lname:"Notly", balance:310},
+			{fname:"Noah", lname:"Ho", balance:503},
+			{fname:"William", lname:"Lee", balance:520},
+			{fname:"Benjamin", lname:"Amis", balance:150},
+		]
+	};
+
+	// Write the function after this comment ---
+	function makeEmailObj(arg) {
+		return `${arg.fname}.${arg['lname']}@evolveu.ca`;
+	}
+	// and before this comment ---
+
+	arrayLarry = {fname:'larry', lname:'shumlich'};
+	assertEquals('larry.shumlich@evolveu.ca', makeEmailObj(arrayLarry));
+	assertEquals('bill.smith@evolveu.ca', makeEmailObj({fname:'bill',lname:'smith'}));
+	assertEquals('amy.jones@evolveu.ca', makeEmailObj({fname:'amy',lname:'jones'}));
+
+}
+
+
+
+
+
+// --------------------------- T h e   E n d   F o l k s ---------------
+
