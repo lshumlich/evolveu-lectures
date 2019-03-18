@@ -1,0 +1,31 @@
+
+.normal {
+	background: #eae0e0;
+	border: solid;
+	width: 40%;
+	min-height: 100px;
+	/*margin: auto;*/
+	text-align: center;
+	padding: 30px;
+	border-radius: 10px;
+	padding: 10px;
+	/*margin: 20px;*/
+	box-shadow: 10px 10px 15px;
+}
+
+.play1 {
+	position: fixed;
+	top: 100px;
+  	left: 115px;
+	background: gray;
+	border: solid;
+	width: 40%;
+	min-height: 100px;
+	/*margin: auto;*/
+	text-align: center;
+	padding: 30px;
+	border-radius: 10px;
+	padding: 10px;
+	/*margin: 20px;*/
+	box-shadow: 10px 10px 15px;
+}

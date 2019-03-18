@@ -8,6 +8,7 @@ console.log("Hello from exercises.js");
 // assertEquals$();
 // makeEmailArr();
 // makeEmailObj();
+makeEmailArrayObjs();
 
 /* * * * * * * * * * * * addNumbers
 	
@@ -175,7 +176,7 @@ function assertEquals$() {
 
 /* * * * * * * * * * * * makeEmailArr
 /*	
-	Write the function that format an email based on an array
+	Write the function to format an email based on an array
 */
 
 function makeEmailArr() {
@@ -186,9 +187,9 @@ function makeEmailArr() {
 	}
 	// and before this comment ---
 
-	arrayLarry = ['larry', 'shumlich'];
+	const arrayLarry = ['larry', 'shumlich'];
 	assertEquals('larry.shumlich@evolveu.ca', makeEmailArr(arrayLarry));
-	assertEquals('bill.smith@evolveu.ca', makeEmailArr(['bill','smith']));
+	assertEquals('bill.smith@evolveu.com', makeEmailArr(['bill','smith']));
 	assertEquals('amy.jones@evolveu.ca', makeEmailArr(['amy','jones']));
 
 }
@@ -196,7 +197,7 @@ function makeEmailArr() {
 
 /* * * * * * * * * * * * makeEmailObj
 /*	
-	Write the function that format an email based on an object / map
+	Write the function to format an email based on an object / map
 */
 
 function makeEmailObj() {
@@ -207,8 +208,8 @@ function makeEmailObj() {
 	}
 	// and before this comment ---
 
-	arrayLarry = {fname:'larry', lname:'shumlich'};
-	assertEquals('larry.shumlich@evolveu.ca', makeEmailObj(arrayLarry));
+	const objLarry = {fname:'larry', lname:'shumlich'};
+	assertEquals('larry.shumlich@evolveu.ca', makeEmailObj(objLarry));
 	assertEquals('bill.smith@evolveu.ca', makeEmailObj({fname:'bill',lname:'smith'}));
 	assertEquals('amy.jones@evolveu.ca', makeEmailObj({fname:'amy',lname:'jones'}));
 
@@ -216,14 +217,15 @@ function makeEmailObj() {
 
 /* * * * * * * * * * * * makeEmailArrayObjs
 /*	
-	Write a function to loop through the data and call makeEmailObj
-	from the last exercise.
+	Write a function to loop through the data and 
+	call makeEmailObj from the last exercise.
+
+	The function is to create an array of email addresses.
 */
 
 function makeEmailArrayObjs() {
-	const data = 
-	{clients:
-		[
+	const data = {
+		staff: [
 			{fname:"Jane", lname:"Smith", balance:10},
 			{fname:"Liam", lname:"Henry", balance:1000},
 			{fname:"Emma", lname:"Jones", balance:1330},
@@ -231,25 +233,132 @@ function makeEmailArrayObjs() {
 			{fname:"Noah", lname:"Ho", balance:503},
 			{fname:"William", lname:"Lee", balance:520},
 			{fname:"Benjamin", lname:"Amis", balance:150},
-		]
+		],
+		company: "EvolveU",
+		city: "Calgary",
+		prov: "Alberta"
 	};
 
 	// Write the function after this comment ---
 	function makeEmailObj(arg) {
 		return `${arg.fname}.${arg['lname']}@evolveu.ca`;
 	}
-	// and before this comment ---
 
-	arrayLarry = {fname:'larry', lname:'shumlich'};
-	assertEquals('larry.shumlich@evolveu.ca', makeEmailObj(arrayLarry));
-	assertEquals('bill.smith@evolveu.ca', makeEmailObj({fname:'bill',lname:'smith'}));
-	assertEquals('amy.jones@evolveu.ca', makeEmailObj({fname:'amy',lname:'jones'}));
+	function loopStaff(arg) {
+		const res = [];
+		for(let i = 0; i < arg.length; i++) {
+			res.push(makeEmailObj(arg[i]));
+		}
+		return res;
+	}
+
+	function loopWithForOf(d) {
+		const res = [];
+		for(let v of d) {
+			res.push(makeEmailObj(v));
+		};
+		return res;
+	}
+
+	function loopWithForIn(d) {
+		const res = [];
+		for(let i in d) {
+			res.push(makeEmailObj(d[i]));
+		}
+		return res;
+	}
+
+	function loopWithEach(d) {
+		const res = [];
+		d.forEach((v) => {
+			res.push(makeEmailObj(v));
+		});
+		return res;
+	}
+
+	function loopWithMap(d) {
+		return d.map(makeEmailObj);
+
+	}
+
+	function loopFilter(balance, d) {
+		const select = d.filter(emp => emp.balance >= balance);
+		return select.map(makeEmailObj);
+
+	}
+	// and before this comment ---
+	
+	console.log('-----loopStaff')
+	const staffEmail = loopStaff(data.staff);
+	// console.log(staffEmail);
+	assertEquals('Jane.Smith@evolveu.ca', staffEmail[0]);
+	assertEquals('Olivia.Notly@evolveu.com', staffEmail[3]);
+	assertEquals('Benjamin.Amis@evolveu.ca', staffEmail[6]);
+	
+	// Suplimintal Exercises for concept
+	console.log('-----loopStaff ---Extra Practise ');
+	console.log('--Company --', data.company);
+	console.log('--City --', data.city);
+	console.log('--Prov --', data.prov);
+
+
+	console.log('-----emailForOf')
+	const emailForOf = loopWithForOf(data.staff);
+	// console.log(emailForOf);
+	assertEquals('Jane.Smith@evolveu.ca', emailForOf[0]);
+	assertEquals('Olivia.Notly@evolveu.com', emailForOf[3]);
+	assertEquals('Benjamin.Amis@evolveu.ca', emailForOf[6]);
+
+	console.log('-----emailForIn')
+	const emailForIn = loopWithForIn(data.staff);
+	// console.log(emailForIn);
+	assertEquals('Jane.Smith@evolveu.ca', emailForIn[0]);
+	assertEquals('Olivia.Notly@evolveu.com', emailForIn[3]);
+	assertEquals('Benjamin.Amis@evolveu.ca', emailForIn[6]);
+
+	console.log('-----emailWithEach')
+	const emailWithEach = loopWithEach(data.staff);
+	// console.log(emailWithEach);
+	assertEquals('Jane.Smith@evolveu.ca', emailWithEach[0]);
+	assertEquals('Olivia.Notly@evolveu.com', emailWithEach[3]);
+	assertEquals('Benjamin.Amis@evolveu.ca', emailWithEach[6]);
+
+	console.log('-----emailWithMap')
+	const emailWithMap = loopWithMap(data.staff);
+	// console.log(emailWithMap);
+	assertEquals('Jane.Smith@evolveu.ca', emailWithMap[0]);
+	assertEquals('Olivia.Notly@evolveu.com', emailWithMap[3]);
+	assertEquals('Benjamin.Amis@evolveu.ca', emailWithMap[6]);
+
+	/*
+		Let's write a function that will create emails for staff
+		with a balance equal or over 1000.
+	*/
+
+	console.log('-----email With Filter')
+	const emailFilter = loopFilter(1000,data.staff);
+	// console.log(emailFilter);
+	assertEquals(2, emailFilter.length);
+	assertEquals('Liam.Henry@evolveu.ca', emailFilter[0]);
+	assertEquals('Emma.Jones@evolveu.ca', emailFilter[1]);
 
 }
 
 
 
-
-
 // --------------------------- T h e   E n d   F o l k s ---------------
 
+const data = {
+	staff: [
+		{fname:"Jane", lname:"Smith", balance:10},
+		{fname:"Liam", lname:"Henry", balance:1000},
+		{fname:"Emma", lname:"Jones", balance:1330},
+		{fname:"Olivia", lname:"Notly", balance:310},
+		{fname:"Noah", lname:"Ho", balance:503},
+		{fname:"William", lname:"Lee", balance:520},
+		{fname:"Benjamin", lname:"Amis", balance:150},
+	],
+	company: "EvolveU",
+	city: "Calgary",
+	prov: "Alberta"
+};
