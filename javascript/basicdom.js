@@ -11,7 +11,7 @@ document.body.addEventListener('click', onBodyClick);
 function onBodyClick(e) {
 	p("Inside bodyClick function");
 //	p(e.target);
-//	p(e.target.getAttribute("place"));
+	p(idH2.getAttribute("place"));
 //	p(e.target.getAttribute("id"));
 }
 
@@ -19,6 +19,7 @@ idBtnPush.addEventListener('click', onButtonClick);
 idH1.addEventListener('click', onHeading1Click);
 idH3.addEventListener('mouseover', onHeading3Over);
 idH4.addEventListener('mouseleave', onHeading4Leave);
+domAdd.addEventListener('click', onItemAdd);
 let string1 = "Hello World";
 let string2 = "Hello Universe";
 let string3 = "Hello Alberta";
@@ -85,24 +86,32 @@ function onHeading4Leave(e) {
 		idH4.textContent = string5;
 	}
 }
+function onItemAdd() {
+	//appending a child (ie. append an item in a list)
+	// Create a <li> node
+	// var node = document.createElement("li");                 
+	// // Create a text node
+	// var textnode = document.createTextNode("Water");         
+	// // Append the text to <li>
+	// node.appendChild(textnode);                              
+	// // Append <li> to <ul> with id="list01"
+	// document.getElementById("list01").appendChild(node);
 
-//appending a child (ie. append an item in a list)
-// Create a <li> node
-var node = document.createElement("LI");                 
-// Create a text node
-var textnode = document.createTextNode("Water");         
-// Append the text to <li>
-node.appendChild(textnode);                              
-// Append <li> to <ul> with id="myList"
-document.getElementById("myList").appendChild(node);
 
 
+	// //Insert a new <li> element before the first child element of an <ul> element:
 
-//Insert a new <li> element before the first child element of an <ul> element:
+	var newItem = document.createElement("li");       // Create a <li> node
+	newItem.textContent = "Water";
+	// var textnode = document.createTextNode("Water");  // Create a text node
+	// newItem.appendChild(textnode);                    // Append the text to <li>
 
-var newItem = document.createElement("LI");       // Create a <li> node
-var textnode = document.createTextNode("Water");  // Create a text node
-newItem.appendChild(textnode);                    // Append the text to <li>
-
-var list = document.getElementById("myList");    // Get the <ul> element to insert a new node
-list.insertBefore(newItem, list.childNodes[0]);  // Insert <li> before the first child of <ul>  
+	// Get the <ul> element to insert a new node
+	var list = document.getElementById("list01");    
+	// Use a 0 index to add at the very beginning, but using 1
+	// puts it after the title of "list of stuff"
+	// Insert <li> before the first child of <ul>  
+	list.insertBefore(newItem, list.childNodes[1]);
+	// this will add to the end of list
+	//list.insertBefore(newItem, null);  
+}

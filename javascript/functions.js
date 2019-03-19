@@ -18,6 +18,33 @@ const func = myFunction;
 console.log(func("Hello","World"));
 
 /*
+		--- Working with Dictionaries ---
+*/
+const dicMsgDiv = document.getElementById("dicMsg");
+let dic = {
+	'ab': 'Alberta', 
+	'bc': 'British Columbia', 
+	'sk': 'Saskatchewan'
+};
+document.getElementById("dicLookup").addEventListener("click", onDicLookup);
+
+function dicMsg(b) {
+	dicMsgDiv.textContent = b;
+}
+
+function onDicLookup(e) {
+	let s = document.getElementById("inDic").value;
+	// console.log("In onDicLookup", e);
+	let a = dic[s];
+	if (a) {
+		dicMsg(a);
+	} else {
+		dicMsg("Entry not valid");
+	}
+	
+}
+
+/*
 
 	---------- Prove that inner blocks have access to outer blocks variables
 
