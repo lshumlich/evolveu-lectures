@@ -1,14 +1,6 @@
 
 console.log("Hello from exercises.js");
-
-// addNumbers();
-// orderArray();
-// makeEmail();
-// makeTrain();
-// assertEquals$();
-// makeEmailArr();
-// makeEmailObj();
-makeEmailArrayObjs();
+const p = console.log;
 
 /* * * * * * * * * * * * addNumbers
 	
@@ -223,21 +215,23 @@ function makeEmailObj() {
 	The function is to create an array of email addresses.
 */
 
+const data = {
+	staff: [
+		{fname:"Jane", lname:"Smith", balance:10},
+		{fname:"Liam", lname:"Henry", balance:1000},
+		{fname:"Emma", lname:"Jones", balance:1330},
+		{fname:"Olivia", lname:"Notly", balance:310},
+		{fname:"Noah", lname:"Ho", balance:503},
+		{fname:"William", lname:"Lee", balance:520},
+		{fname:"Benjamin", lname:"Amis", balance:150},
+	],
+	company: "EvolveU",
+	city: "Calgary",
+	prov: "Alberta"
+};
+
+
 function makeEmailArrayObjs() {
-	const data = {
-		staff: [
-			{fname:"Jane", lname:"Smith", balance:10},
-			{fname:"Liam", lname:"Henry", balance:1000},
-			{fname:"Emma", lname:"Jones", balance:1330},
-			{fname:"Olivia", lname:"Notly", balance:310},
-			{fname:"Noah", lname:"Ho", balance:503},
-			{fname:"William", lname:"Lee", balance:520},
-			{fname:"Benjamin", lname:"Amis", balance:150},
-		],
-		company: "EvolveU",
-		city: "Calgary",
-		prov: "Alberta"
-	};
 
 	// Write the function after this comment ---
 	function makeEmailObj(arg) {
@@ -344,21 +338,104 @@ function makeEmailArrayObjs() {
 
 }
 
+/* * * * * * * * * * * * functionOptions
+/*	
+	Write a function to loop through the data and 
+	call makeEmailObj from the last exercise.
+
+	The function is to create an array of email addresses.
+*/
+
+function functionOptions() {
+
+	console.log('-----Function Options - - -');
+
+	function simpleFunction(p1) {
+		return `   simpleFunction: ${p1}   `;
+	}
+
+	const simpleArrow = (p1) => `   simpleArrow: ${p1}   `;
+
+	const anotherArrow = (p1) => {
+		const a = 'do what ever is needed';
+		const b = 'in this error function';
+		return `   anotherArrow: ${p1}   `;
+	}
+
+	console.log(simpleFunction('what.'));
+
+	console.log(simpleArrow('what!'));
+
+	console.log(anotherArrow('what?'));
+
+	console.log(function () {
+		return 'what ever!';
+
+	}());
+}
+
+
+/* * * * * * * * * * * * functionOptions
+/*	
+	Write a function to loop through the data and 
+	call makeEmailObj from the last exercise.
+
+	The function is to create an array of email addresses.
+*/
+
+function callBackSimpleExample() {
+
+	console.log('-----callBackSimpleExample - - -');
+
+	let count = 0;
+	function myCounter() {
+		console.log(` we are at count: ${count++}`);
+	}
+
+	console.log(`myCounter Stage1: ${myCounter}`);
+	console.log(`myCounter Stage2: ${myCounter()}`);
+
+	setInterval(myCounter, 1000);
+
+}
+
+function myCallBackFunction() {
+
+	console.log('-----myCallBackFunction - - -');
+
+	function myCallBackFunction(ar, func) {
+		// console.log(` we are at myCallBackFunction ${ar} ${ar.length}`);
+		func('hello');
+		for (let i = 0; i < ar.length; i++) {
+			// console.log(' in loop:', i, ar[i]);
+			func(ar[i]);
+		}
+		// console.log(` after loop`);
+	}
+
+	function myWorkerFunction(p1) {
+		console.log(`in my myWorkerFunction ${p1}`, p1);
+	}
+
+	myCallBackFunction(data.staff, myWorkerFunction);
+
+}
+
 
 
 // --------------------------- T h e   E n d   F o l k s ---------------
 
-const data = {
-	staff: [
-		{fname:"Jane", lname:"Smith", balance:10},
-		{fname:"Liam", lname:"Henry", balance:1000},
-		{fname:"Emma", lname:"Jones", balance:1330},
-		{fname:"Olivia", lname:"Notly", balance:310},
-		{fname:"Noah", lname:"Ho", balance:503},
-		{fname:"William", lname:"Lee", balance:520},
-		{fname:"Benjamin", lname:"Amis", balance:150},
-	],
-	company: "EvolveU",
-	city: "Calgary",
-	prov: "Alberta"
-};
+// addNumbers();
+// orderArray();
+// makeEmail();
+// makeTrain();
+// assertEquals$();
+// makeEmailArr();
+// makeEmailObj();
+// makeEmailArrayObjs();
+// functionOptions();
+// callBackSimpleExample();
+// myCallBackFunction();
+
+
+[1,2,3].forEach(function(a,b,c){console.log(a,b,c)})
