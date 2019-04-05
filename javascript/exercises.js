@@ -1,4 +1,8 @@
+/*
 
+	Go to the end of the file to execute functions.
+
+*/
 console.log("Hello from exercises.js");
 const p = console.log;
 
@@ -421,7 +425,39 @@ function myCallBackFunction() {
 
 }
 
+function funkyOneLiner() {
+	[1,2,3,4,5].forEach(function(a,b,c){console.log(a,b,c)})
+}
 
+
+function selectArray() {
+	let largeBalances = data.staff.filter(item => item.balance >= 1000);
+	// console.log(largeBalances);
+	assertEquals(largeBalances[0].fname, "Liam");
+	assertEquals(largeBalances[1].fname, "Emma");
+}
+
+
+function reduceArray() {
+	const tot = data.staff.reduce((acum, item) => acum + item.balance, 0);
+	console.log(tot);
+	assertEquals(tot, 3823);
+}
+
+function testArrayFill() {
+	const a = Array(9).fill(null);
+	console.log(a);
+}
+
+function timeout() {
+	setTimeout(function(){alert("hi")}, 1000);
+}
+
+const func = function() {
+	console.log("what Ever");
+}
+
+const asdf = (a) => 'Arrow Func:' + a;
 
 // --------------------------- T h e   E n d   F o l k s ---------------
 
@@ -436,6 +472,10 @@ function myCallBackFunction() {
 // functionOptions();
 // callBackSimpleExample();
 // myCallBackFunction();
-
-
-[1,2,3].forEach(function(a,b,c){console.log(a,b,c)})
+// funkyOneLiner();
+// selectArray();
+// reduceArray();
+// testArrayFill();
+// timeout();
+func();
+console.log(asdf('asdf'));
