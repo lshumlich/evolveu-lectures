@@ -453,11 +453,7 @@ function timeout() {
 	setTimeout(function(){alert("hi")}, 1000);
 }
 
-const func = function() {
-	console.log("what Ever");
-}
-
-const asdf = (a) => 'Arrow Func:' + a;
+const arrowFunc = (a) => 'Arrow Func:' + a;
 
 // --------------------------- T h e   E n d   F o l k s ---------------
 
@@ -477,5 +473,4 @@ const asdf = (a) => 'Arrow Func:' + a;
 // reduceArray();
 // testArrayFill();
 // timeout();
-func();
-console.log(asdf('asdf'));
+console.log(arrowFunc('asdf'));
