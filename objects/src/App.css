@@ -11,6 +11,7 @@
   animation: App-logo-spin infinite 20s linear;
   height: 50px;
 }
+
 .lfs-center {
   max-width: 90%;
   /*float: right;*/
@@ -24,6 +25,38 @@
   border: solid;
 }
 
+
+.link-center {
+  max-width: 45%;
+  /*float: right;*/
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  border: solid;
+}
+
+.link-table {
+    width: 100%;
+}
+
+.link-add {
+  background: white;
+  border: solid;
+  width: 50%;
+  min-height: 60px;
+  margin: auto;
+  margin-top: 15px;
+  text-align: center;
+  padding: 50px;
+  border-radius: 10px;
+  padding: 10px;
+  /*margin: 20px;*/
+  box-shadow: 10px 10px 15px;
+}
+
+.ll-input {
+  width: 90%;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

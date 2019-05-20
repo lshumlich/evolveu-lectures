@@ -19,31 +19,13 @@ class LinkedListComp extends React.Component {
 
   constructor() {
     super();
-    this.ll = null;
+    this.ll = new ll.LinkedList();
     this.count = 0;
-    this.onNew = this.onNew.bind(this);
     this.state = {
       stateExample: "Bla Bla Bla State Display",
       valuexx: "v1.0",
     }
   }
-
-/********************
-
-- if functions need access to "this.", they must be bound
-- all the normal JavaScript functions and methods work
-- React allows you to write small components and provides some
-  additional functionality like state for auto refresh
-
-*/
-
-  onNew() {
-    this.ll = new ll.LinkedList(
-      document.getElementById("subject").value,
-      document.getElementById("amount").value
-    );
-  }
-
  /********************
 
   Example of an arrow function. With arrow functions you do not
@@ -52,37 +34,48 @@ class LinkedListComp extends React.Component {
 */
 
   onAdd = () => {
-    this.ll.add(
-      document.getElementById("subject").value,
-      document.getElementById("amount").value
-    );
-  }
-
-  onShowAll = () => {
-    if (this.ll) {
-      document.getElementById("console").innerHTML = this.ll.show();
+    if (document.getElementById("subject").value) {
+      this.ll.add(
+        document.getElementById("subject").value,
+        document.getElementById("amount").value
+      );
+      this.show(this.ll);
+      document.getElementById("subject").value = "";
+      document.getElementById("amount").value = "";
     }
   }
 
- /********************
-
-  Notice onClear could be used by any <div> or any other DOM
-  object that you needed this functionality for. 
-  The target is passed in the event.
-
-*/
-
-  onClear = (e) => {
-    e.currentTarget.innerHTML = "";
+  onFirst = () => {
+    this.ll.first()
+    this.show(this.ll);
   }
 
+  onNext = () => {
+    this.ll.next()
+    this.show(this.ll);
+  }
 
- /********************
+  onPrev = () => {
+    this.ll.prev()
+    this.show(this.ll);
+  }
 
+  onLast = () => {
+    this.ll.last()
+    this.show(this.ll);
+  }
 
+  onDelete = () => {
+    this.ll.delete()
+    this.show(this.ll);
+  }
 
+  show(display) {
+    this.setState({
+      valuexx: display.show()
+    });
+  }
 
-*/
 
   onChange = (event) => {
     this.setState({valuexx: event.target.value});
@@ -100,7 +93,6 @@ class LinkedListComp extends React.Component {
 
   Notice the delegated function. When the button is pressed
   the function in "App" is actually executed.
-
 */
 
   render() {
@@ -108,11 +100,38 @@ class LinkedListComp extends React.Component {
       <div className="lfs-look">
         <h3>Linked List: {this.props.name} - {this.state.valuexx} </h3>
         <br/>
-        <button onClick={this.onNew}>New</button>
-        <button onClick={this.onAdd}>Add</button>
-        <br/>
-        <input id="subject"/>
-        <input id="amount"/>
+        <div className="link-add">
+          <button onClick={this.onFirst}>First</button>
+          <button onClick={this.onNext}>Next</button>
+          <button onClick={this.onDelete}>Delete</button>
+          <button onClick={this.onPrev}>Prev</button>
+          <button onClick={this.onLast}>Last</button>
+          <br/>
+          <div>{this.state.valuexx}</div>
+        </div>
+
+        <div className="link-add">
+          <table className="link-table">
+            <tr>
+              <td>
+                Subject
+              </td>
+              <td>
+                Amount
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input className="ll-input" id="subject"/>
+              </td>
+              <td>
+                <input  className="ll-input" id="amount"/>
+              </td>
+            </tr>
+          </table>
+          <button onClick={this.onAdd}>Add</button>
+        </div>
+
         <br/>
         <button onClick={this.onShowAll}>Show All</button>
         <button onClick={this.onShowState}>Show State</button>
@@ -122,7 +141,9 @@ class LinkedListComp extends React.Component {
         <div> Prop:{this.props.name}: {this.state.stateExample} </div>
         <br/>
         <input value={this.state.valuexx} onChange={this.onChange} />
-        <div>{this.state.valuexx}</div>
+
+
+
       </div>
     );
   }

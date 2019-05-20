@@ -526,7 +526,23 @@ function myPeopleCallBackFunction() {
 			console.log(item.fname + " " + item.lname + " is over 25 years old");
 		}
 	});
+
 }
+
+let a = 0;
+
+function destructuring() {
+	const arr = [1,2,3,4,5,6];
+	const obj = {fname: 'Larry', lname: 'Shumlich', age: 29, sex:'Male'};
+	
+	let [p1, p2, ...arest] = arr;
+	let {fname, age, ...orest} = obj;
+
+	console.log('arr', p1, '-', p2, '-' , arest);
+	console.log('obj', fname, '-', age, '-', orest);
+	return a = 12 + 7;
+}
+
 
 // --------------------------- T h e   E n d   F o l k s ---------------
 
@@ -548,3 +564,4 @@ function myPeopleCallBackFunction() {
 // timeout();
 // console.log(arrowFunc('asdf'));
 // myPeopleCallBackFunction();
+console.log('test value:',destructuring(), "and a = ", a);
