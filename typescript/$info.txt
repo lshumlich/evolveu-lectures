@@ -1,0 +1,11 @@
+
+TypeScript - Getting Started Again Notes
+- Current Status
+The HTML files are not copying to the build folder.
+
+-- Start lite-server
+npm start 
+
+-- Start TypeScript converter
+
+tsc -w
