@@ -1,0 +1,46 @@
+body {
+    color: black;
+    background: #f0f0f0;
+}
+
+.group-card {
+    /*margin: auto;*/
+    /*margin: 10px;*/
+    /*width: 90%;*/
+    float: left;
+    width: 400px;
+    /*max-height: 300px;*/
+    height: 450px;
+    border-spacing: 10px;
+    /*min-height: 50px;*/
+    padding: 10px;
+    /*border: solid;*/
+    text-align: center;
+    background: white;
+    overflow: scroll;
+}
+
+.card {
+    /*margin: auto;*/
+    margin: 10px;
+    width: 90%;
+    /*max-width: 400px;*/
+    /*max-height: 300px;*/
+    min-height: 100px;
+    border-spacing: 10px;
+    /*min-height: 50px;*/
+    padding: 10px;
+    /*border: solid;*/
+    text-align: center;
+    background: #f0f0f0;
+}
+
+.card:hover {
+    /*background: blue; */
+    /*background: #f0f0f0;*/
+    background: rgba(0, 0, 255, 0.3);
+}
+
+.card:active {
+    background-color: yellow;
+}

@@ -4,7 +4,12 @@
   "description": "",
   "main": "advanced.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "testcov": "jest --coverage",
+    "testmod1": "jest src/mod1",
+    "testmod1cov": "jest src/mod1 --coverage",
+    "testfile": "jest src/01-getting-started/scripts/lfsplay.test.js",
+    "testdom": "jest dom"
   },
   "author": "",
   "license": "ISC",
