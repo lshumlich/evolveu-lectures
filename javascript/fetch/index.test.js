@@ -1,5 +1,6 @@
 
-// import fetchFunc from './index';
+import fetchFunc from './index';
+
 // import 'whatwg-fetch'
 
 const data =    [
@@ -19,6 +20,7 @@ const data =    [
 test('Test json data', () => {
     console.log('Hello World');
     showTime();
+    // fetchFunc.getUsers();
     // fetchFunc.show(data);
     // fetchFunc.showNames();
     // fetchFunc.fetch();

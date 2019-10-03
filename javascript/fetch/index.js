@@ -12,22 +12,27 @@ const functions = {
         data.forEach((d, i, x) => console.log(d.name, i));
     },
 
-    async getUsers() {
-        try {
-            const response = await fetch(functions.url);
-            const json = await response.json();
-            return json;
-        } catch (error) {
-            console.error('Error:', error);
-            throw (error);
-        }
-    },
+    // async justPlay() {
+    justPlay() {
+        console.log("What Ever.");
 
-    async workWithData() {
-        const data = await this.getUsers();
-        this.show(data);
-        this.showNames(data);
-    }
+    },
+    // async getUsers() {
+    //     try {
+    //         const response = await fetch(functions.url);
+    //         const data = await response.json();
+    //         return data;
+    //     } catch (error) {
+    //         console.error('Error:', error);
+    //         throw (error);
+    //     }
+    // },
+
+    // async workWithData() {
+    //     const data = await this.getUsers();
+    //     this.show(data);
+    //     this.showNames(data);
+    // }
 }
 
 addEventListener('load', () => {
@@ -78,9 +83,9 @@ const me = {
     "region": "Canada"
 };
 
-// console.log(me);
+console.log(me);
 const sMe = JSON.stringify(me);
-// console.log(sMe);
+console.log(sMe);
 
 async function postData(url = '', data = {}) {
     // Default options are marked with *
