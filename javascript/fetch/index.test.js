@@ -20,7 +20,7 @@ const data =    [
 test('Test json data', () => {
     console.log('Hello World');
     showTime();
-    // test3();
+    test3();
     // fetchFunc.getUsers();
     // fetchFunc.show(data);
     // fetchFunc.showNames();
