@@ -20,12 +20,12 @@ const data =    [
 test('Test json data', () => {
     console.log('Hello World');
     showTime();
+    // test3();
     // fetchFunc.getUsers();
     // fetchFunc.show(data);
     // fetchFunc.showNames();
     // fetchFunc.fetch();
     // fetchFunc.test2();
-    // test3();
     // expect(getIdArray(groupCard))
     //     .toEqual(["idAdd", "1", "2", "3", "4"]);
 });
