@@ -1,5 +1,7 @@
 
 import fetchFunc from './index';
+import functions from './index';
+const fetch = require('node-fetch');
 
 // import 'whatwg-fetch'
 
@@ -17,10 +19,10 @@ const data =    [
     ];
 
 
-test('Test json data', () => {
+test('Test json data', done => {
     console.log('Hello World');
     showTime();
-    test3();
+    test3(done);
     // fetchFunc.getUsers();
     // fetchFunc.show(data);
     // fetchFunc.showNames();
@@ -31,13 +33,15 @@ test('Test json data', () => {
 });
 
 
-async function test3() {
+async function test3(done) {
     try {
-        const response = await windows.fetch(functions.url);
+        const response = await fetch(functions.url);
         const json = await response.json();
-        console.log('Success:', json);
+        console.log('Success:', await json);
+        done()
     } catch (error) {
         console.error('Error:', error);
+        done()
     }
 }
 
