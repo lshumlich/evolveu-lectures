@@ -1,0 +1,5 @@
+[
+    { "key": 1, "city": "Calgary", "lat": 51.05, "long": -114.05 },
+    { "key": 2, "city": "Edmonton", "lat": 53.55, "long": -113.49 },
+    { "key": 3, "city": "Red Deer", "lat": 52.28, "long": -113.81 }
+]
