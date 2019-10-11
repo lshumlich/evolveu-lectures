@@ -15,18 +15,18 @@ const functions = {
     // async justPlay() {
     justPlay() {
         console.log("What Ever.");
-
     },
-    // async getUsers() {
-    //     try {
-    //         const response = await fetch(functions.url);
-    //         const data = await response.json();
-    //         return data;
-    //     } catch (error) {
-    //         console.error('Error:', error);
-    //         throw (error);
-    //     }
-    // },
+    
+    async getUsers() {
+        try {
+            const response = await fetch(functions.url);
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error('Error:', error);
+            throw (error);
+        }
+    },
 
     // async workWithData() {
     //     const data = await this.getUsers();

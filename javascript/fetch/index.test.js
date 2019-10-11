@@ -1,9 +1,6 @@
 
 import fetchFunc from './index';
-import functions from './index';
-const fetch = require('node-fetch');
-
-// import 'whatwg-fetch'
+global.fetch = require('node-fetch');
 
 const data =    [
         { "name": "Maricica", "surname": "Ghinea", "gender": "female", "region": "Romania" },
@@ -20,10 +17,9 @@ const data =    [
 
 
 test('Test json data', done => {
-    console.log('Hello World');
     showTime();
     test3(done);
-    // fetchFunc.getUsers();
+    fetchFunc.getUsers();
     // fetchFunc.show(data);
     // fetchFunc.showNames();
     // fetchFunc.fetch();
