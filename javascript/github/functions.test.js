@@ -5,7 +5,6 @@
 */
 
 import githubFunc from "./functions.js";
-// import dataStuff from "../../../data/repositories.js";
 import * as repoData from "./repositoriesTest.js";
 
 const repositories = repoData.repositories;
@@ -30,9 +29,14 @@ test('hours since function', () => {
         .toEqual(48);
 });
 
-test('hours since function', () => {
+test('get last changed from the github api', () => {
     expect(githubFunc.lastChanged(data))
         .toEqual("2019-10-10T18:04:07Z");
+});
+
+test('nice formated date', () => {
+    expect(githubFunc.niceDate("2019-01-31T22:00:43Z"))
+        .toBe("Thu Jan 31 2019 15:00:43 GMT");
 });
 
 
@@ -59,31 +63,61 @@ async function testGet(done) {
 }
 
 // this is just for testing so we don't need to hit all the repositories each test
-test('assign random numbers', () => {
+test('assign random numbers for testing', () => {
     const repos = githubFunc.getRepositories(repositories);
     githubFunc.randomTimes(repos);
-    expect(repos[1].lastChanged).toBeGreaterThan(-1);
-    // console.log(repos);
+    expect(repos[1].elapsed).toBeGreaterThan(-1);
+    expect(repos[1].lastChanged).toBeTruthy();
+    expect(repos[1].lastChanged.substr(-1)).toBe("Z"); // Zulu time
 });
 
 test('sort the repositories in last updated order', () => {
     const repos = githubFunc.getRepositories(repositories);
-    githubFunc.randomTimes(repos);
-    githubFunc.sortByTimes(repos);
-    // console.log(repos);
-    expect(repos[0].lastChanged).toBeGreaterThanOrEqual(repos[1].lastChanged);
-    expect(repos[1].lastChanged).toBeGreaterThanOrEqual(repos[2].lastChanged);
+    // githubFunc.randomTimes(repos);
+
+    // sort defaults to elapsed and asending
+    repos[0].elapsed = 1000;
+    repos[1].elapsed = 100;
+    repos[2].elapsed = 10;
+    githubFunc.sort(repos);
+    expect(repos[1].elapsed).toBeGreaterThanOrEqual(repos[0].elapsed);
+    expect(repos[2].elapsed).toBeGreaterThanOrEqual(repos[1].elapsed);
+
+    // make sure it sort with a field name
+    repos[0].elapsed = 1000;
+    repos[1].elapsed = 100;
+    repos[2].elapsed = 10;
+    githubFunc.sort(repos, "elapsed");
+    expect(repos[1].elapsed).toBeGreaterThanOrEqual(repos[0].elapsed);
+    expect(repos[2].elapsed).toBeGreaterThanOrEqual(repos[1].elapsed);
+
+    // make sure it sort decending
+    repos[0].elapsed = 10;
+    repos[1].elapsed = 100;
+    repos[2].elapsed = 1000;
+    githubFunc.sort(repos, "elapsed", "d");
+    expect(repos[0].elapsed).toBeGreaterThanOrEqual(repos[1].elapsed);
+    expect(repos[1].elapsed).toBeGreaterThanOrEqual(repos[2].elapsed);
+
+    // sort by string needs to work
+    repos[0].name = "a";
+    repos[1].name = "c";
+    repos[2].name = "b";
+    githubFunc.sort(repos, "name");
+    expect(repos[0].name <= repos[1].name).toBeTruthy();
+    expect(repos[1].name <= repos[2].name).toBeTruthy();
 });
 
 test('create dom from repositories', () => {
     const repos = githubFunc.getRepositories(repositories);
     githubFunc.randomTimes(repos);
-    githubFunc.sortByTimes(repos);
-    const repoList = document.createElement("div");
-    githubFunc.buildDom(repoList, repos);
+    githubFunc.sort(repos);
+    const repoDom = document.createElement("div");
+    githubFunc.buildDom(repoDom, repos);
     // console.log(repoList.textContent);
     // console.log(repoList.innerHTML);
 });
+
 
 // Simulates github api data for testing
 const data =
