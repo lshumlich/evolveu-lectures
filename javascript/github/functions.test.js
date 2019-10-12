@@ -1,5 +1,15 @@
+/*
+
+    npm test github -- -t 'sort'
+
+*/
 
 import githubFunc from "./functions.js";
+// import dataStuff from "../../../data/repositories.js";
+import * as repoData from "./repositoriesTest.js";
+
+const repositories = repoData.repositories;
+
 global.fetch = require('node-fetch');
 
 test('hours since function', () => {
@@ -30,9 +40,9 @@ test('get repository list', () => {
     // console.log(repositories);
     const repos = githubFunc.getRepositories(repositories);
     expect(repos[0].name)
-        .toEqual("Adriana Chapellin-Silva");
+        .toEqual("Larry Shumlich");
     expect(repos[2].repo)
-        .toEqual("Bstill8/cohort-3");
+        .toEqual("lshumlich/react-d3");
 });
 
 test('get repository data from github', (done) => {
@@ -75,15 +85,7 @@ test('create dom from repositories', () => {
     // console.log(repoList.innerHTML);
 });
 
-// NOTE... When creating this just copy and past the three columns from the spreadsheet
-const repositories =
-    `
-Adriana Chapellin-Silva	silva.adrianavc@gmail.com	https://github.com/asilva-cell/cohort3
-Asif Mavany	mavany.asif@gmail.com	https://github.com/afernsmavany/cohort3
-Brendan Stillwell	stillwellbrendan@gmail.com	https://github.com/Bstill8/cohort-3
-`
-
-
+// Simulates github api data for testing
 const data =
 {
     "id": 168603685,
