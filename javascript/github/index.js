@@ -14,11 +14,7 @@ const repositories = repoData.repositories;
 const repos = githubFunc.getRepositories(repositories);
 let sortColumn = "name";
 
-
-// console.log("Hello world after import");
-
 window.onload = () => {
-    // document.body.appendChild(groupCard);
     startup();
 };
 
@@ -27,12 +23,13 @@ window.onclick = (e) => {
     } else if (e.target.className == 'repo') {
         showRepo(e.target.textContent);
     } else if (e.target.className == 'lastUpdated space') {
-        // console.log("you know what you have to do.");
         updateRepositoryLastChanged();
     } else if (e.target.className == 'header') {
         sortRepos(e.target);
     } else if (e.target.className == 'name') {
         showPicture(e.target);
+    } else if (e.target.className == 'email') {
+        showEmail(e.target);
     } else if (e.target.className == 'modal') {
         closePicture(e.target);
     } else if (e.target.className == 'picture') {
@@ -45,22 +42,13 @@ window.onclick = (e) => {
 }
 function showRepo(txt) {
     const repo = "https://github.com/" + txt;
-    // const src = "blob/master/src/javascript/daily.js"
     const src = idFile.value;
-    // console.log(idFile.value);
-    // console.log("Do Repo Stuff");
-    // console.log(repo);
-    // window.open(repo, "_repo");
     window.open(repo + "/" + src, "_repo");
 }
 
 function updateRepos() {
-    // while (idRepoList.firstChild) {
-    //     idRepoList.removeChild(idRepoList.firstChild);
-    // }
     removeChildren(idRepoList);
     githubFunc.buildDom(idRepoList, repos);
-    // startup();
 }
 
 function removeChildren(node) {
@@ -70,9 +58,7 @@ function removeChildren(node) {
 }
 
 function sortRepos(node) {
-
     const sortBy = node.getAttribute("sortby");
-
     if (sortBy) {
         // if the same header is sorted twice we 
         // sort in decending order 
@@ -92,26 +78,16 @@ function sortRepos(node) {
 }
 
 async function updateRepositoryLastChanged() {
-
-    // console.log("----- index updateRepositoryLastChanged");
-    
     await githubFunc.updateRepositoryLastChanged(repos);
     updateRepos();
-    // console.log("----- index finished updateRepositoryLastChanged");
-    
 }
 
 function startup() {
-    // const repos = githubFunc.getRepositories(repositories);
-    githubFunc.randomTimes(repos);
-    // githubFunc.sort(repos);
-    // console.log(repos);
-    // const repoList = document.createElement("div");
+    // githubFunc.randomTimes(repos);
     githubFunc.buildDom(idRepoList, repos);
 }
 
 function showPicture(node) {
-    // console.log("Show the Picture");
     const picture = node.getAttribute("picture");
     var img = document.createElement("IMG");
     img.className="picture";
@@ -119,9 +95,15 @@ function showPicture(node) {
     removeChildren(pictureId);
     pictureId.appendChild(img);
     modelId.style.display = "block";
-    // console.log("showPicture:", picture);
 }
 
 function closePicture(node) {
     modelId.style.display = "none";
+}
+
+function showEmail(node) {
+    const email = node.textContent
+    const subject = encodeURI("Feedback on your github repository");
+
+    window.open(`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${email}&su=${subject}`, "_email");
 }
