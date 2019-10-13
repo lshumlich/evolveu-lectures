@@ -6,7 +6,6 @@ a comma seperated dataset.
 */
 
 export const repositories = `
-Larry Shumlich	larry@evolveu.ca	https://github.com/lshumlich/evolveu-lectures
-Billy Bob	bill@evolveu.ca	https://github.com/lshumlich/evolveu-progress
-Sally Jane	sally@evolveu.ca	https://github.com/lshumlich/react-d3
-`
+Larry Shumlich	larry@evolveu.ca	https://github.com/lshumlich/evolveu-lectures	Larry
+Billy Bob	bill@evolveu.ca	https://github.com/lshumlich/evolveu-progress	Mohsen
+Sally Jane	sally@evolveu.ca	https://github.com/lshumlich/react-d3	Sally`

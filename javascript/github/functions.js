@@ -23,7 +23,7 @@ const functions = {
                 const fields = l.split('\t');
                 const repo = fields[2].split('/');
                 // console.log(repo);
-                repositories.push({name:fields[0], email:fields[1], repo:repo[3] + '/' + repo[4]})
+                repositories.push({name:fields[0], email:fields[1], repo:repo[3] + '/' + repo[4], picture:fields[3]});
                 // for (const f of fields) {
                 //     console.log(f);
                 // }
@@ -122,6 +122,7 @@ const functions = {
             row.appendChild(td);
             td.appendChild(document.createTextNode(v.name));
             td.className="name";
+            td.setAttribute("picture",v.picture);
 
             td = document.createElement('td');
             row.appendChild(td);
@@ -145,10 +146,17 @@ const functions = {
         });
     },
 
-    updateRepositoryLastChanged(repos) {
-        repos.forEach((r) => {
-            console.log(r.repo);
-        })
+    updateRepositoryLastChanged: async (repos) => {
+        console.log("functions updateRepositoryLastChanged");
+        
+        repos.forEach(async (r) =>  {
+            const data = await functions.fetchRepositoryFromGithub(r.repo);
+            r.lastChanged = functions.lastChanged(data);
+            r.elapsed = functions.hoursSinceNow(r.lastChanged);
+            console.log(r.repo, r.lastChanged, r.elapsed);
+        });
+
+        console.log(repos);
     },
 }
 

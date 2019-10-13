@@ -27,4 +27,7 @@ yarn-error.log*
 # python
 __pycache__
 /__pycache__
+
+# Special Files
 javascript/github/repositories.js
+javascript/github/pictures

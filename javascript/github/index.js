@@ -1,6 +1,14 @@
+/*
 
+    One thing to fix is a scrolling table with fixed header. 
+    This code does it.
+
+    https://medium.com/@vembarrajan/html-css-tricks-scroll-able-table-body-tbody-d23182ae0fbc
+
+*/
 import githubFunc from "./functions.js";
-import * as repoData from "./repositories.js";
+// import * as repoData from "./repositories.js";
+import * as repoData from "./repositoriesTest.js";
 
 const repositories = repoData.repositories;
 const repos = githubFunc.getRepositories(repositories);
@@ -15,51 +23,55 @@ window.onload = () => {
 };
 
 window.onclick = (e) => {
-    // console.log('you clicked', e.target);
-    // console.log('you clicked', e.target.className);
     if (!e.target.className) {
-        showRepo(e.target.textContent);
     } else if (e.target.className == 'repo') {
         showRepo(e.target.textContent);
-    } else if (e.target.className == 'update') {
-        console.log("you know what you have to do.");
-        updateRepos();
+    } else if (e.target.className == 'lastUpdated') {
+        // console.log("you know what you have to do.");
+        updateRepositoryLastChanged();
     } else if (e.target.className == 'header') {
         sortRepos(e.target);
+    } else if (e.target.className == 'name') {
+        showPicture(e.target);
+    } else if (e.target.className == 'modal') {
+        closePicture(e.target);
+    } else if (e.target.className == 'picture') {
+        closePicture(e.target);
+    } else if (e.target.className == 'modal-content') {
+        closePicture(e.target);
     } else {
         console.log("not sure how to deal with: ", e.target.className);
     };
 }
-
 function showRepo(txt) {
     const repo = "https://github.com/" + txt;
     // const src = "blob/master/src/javascript/daily.js"
     const src = idFile.value;
-    console.log(idFile.value);
-    console.log("Do Repo Stuff");
-    console.log(repo);
+    // console.log(idFile.value);
+    // console.log("Do Repo Stuff");
+    // console.log(repo);
     // window.open(repo, "_repo");
     window.open(repo + "/" + src, "_repo");
 }
 
 function updateRepos() {
-    while (idRepoList.firstChild) {
-        idRepoList.removeChild(idRepoList.firstChild);
-    }
+    // while (idRepoList.firstChild) {
+    //     idRepoList.removeChild(idRepoList.firstChild);
+    // }
+    removeChildren(idRepoList);
     githubFunc.buildDom(idRepoList, repos);
     // startup();
 }
 
+function removeChildren(node) {
+    while (node.firstChild) {
+        node.removeChild(node.firstChild);
+    }
+}
+
 function sortRepos(node) {
-    console.log("sortRepos:", node);
-
-    console.log("sortRepos:", node.getAttribute("sortby"));
-
-    // th.setAttribute("order","d");
-
 
     const sortBy = node.getAttribute("sortby");
-
 
     if (sortBy) {
         // if the same header is sorted twice we 
@@ -79,6 +91,16 @@ function sortRepos(node) {
     updateRepos();
 }
 
+async function updateRepositoryLastChanged() {
+
+    console.log("----- index updateRepositoryLastChanged");
+    
+    await githubFunc.updateRepositoryLastChanged(repos);
+    updateRepos();
+    console.log("----- index finished updateRepositoryLastChanged");
+    
+}
+
 function startup() {
     // const repos = githubFunc.getRepositories(repositories);
     githubFunc.randomTimes(repos);
@@ -87,4 +109,19 @@ function startup() {
     // const repoList = document.createElement("div");
     githubFunc.buildDom(idRepoList, repos);
 }
-// NOTE... When creating this just copy and past the three columns from the spreadsheet
+
+function showPicture(node) {
+    // console.log("Show the Picture");
+    const picture = node.getAttribute("picture");
+    var img = document.createElement("IMG");
+    img.className="picture";
+    img.src = "pictures/" + picture + ".jpg";
+    removeChildren(pictureId);
+    pictureId.appendChild(img);
+    modelId.style.display = "block";
+    // console.log("showPicture:", picture);
+}
+
+function closePicture(node) {
+    modelId.style.display = "none";
+}
