@@ -1,38 +1,99 @@
+body {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
 #repoList {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
 
-#repoList td,
-#repoList th {
+#idRepoList td,
+#idRepoList th {
     border: 1px solid #ddd;
     padding: 8px;
 }
 
-#repoList tr:nth-child(even) {
+#idRepoList tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-#repoList tr:hover {
+#idRepoList tr:hover {
     background-color: #ddd;
 }
 
-#repoList th {
+#idRepoList th {
     padding-top: 12px;
     padding-bottom: 12px;
-    text-align: left;
-    background-color: rgb(130, 141, 131);
+    /* text-align: left; */
+    background-color: rgb(128, 149, 153);
     color: white;
-}
-
-#repoList tbody {
-    overflow: auto;
-    height: 100px;
 }
 
 
 /* ------------- scrolling ---------------- */
+
+body,
+header,
+section,
+footer,
+div {
+    /* Change this to a 0 to get rid of scroll bar */
+    border: 2px dotted grey;
+    margin: 0px;
+}
+
+body {
+    display: flex;
+    flex-flow: column;
+    height: 100vh;
+}
+
+header {
+    flex: 0 1 auto;
+}
+
+section {
+    flex: 1 1 auto;
+}
+
+footer {
+    flex: 0 1 20px;
+    text-align: right;
+}
+
+
+/* ------------ table scrolling -------------- */
+
+#idRepoList {
+    overflow-y: auto;
+    height: 100px;
+}
+
+#idRepoList thead th {
+    position: sticky;
+    top: 0;
+}
+
+
+/* Just common table stuff. Really. */
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    padding: 8px 16px;
+}
+
+th {
+    background: #eee;
+}
+
+
+/* ------------- Spacing ---------------- */
 
 .space {
     padding: 6px;

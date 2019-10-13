@@ -72,8 +72,8 @@ const functions = {
     buildDom(dom, repos) {
         const table = document.createElement('table');
         dom.appendChild(table);
-        table.className = "repoList";
-        table.id = "repoList";
+        // table.className = "repoList";
+        // table.id = "repoList";
 
         const thead = document.createElement('thead');
         table.appendChild(thead);
