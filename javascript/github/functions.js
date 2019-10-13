@@ -1,3 +1,6 @@
+// import { promises } from "fs";
+
+// import { promises } from "fs";
 
 // console.log('functions have been imported.')
 
@@ -10,7 +13,7 @@ const functions = {
     },
 
     niceDate: (s) => {
-        return new Date(s).toString().substr(0,28);
+        return new Date(s).toString().substr(0, 28);
     },
     lastChanged: (rep) => rep.pushed_at,
 
@@ -23,7 +26,7 @@ const functions = {
                 const fields = l.split('\t');
                 const repo = fields[2].split('/');
                 // console.log(repo);
-                repositories.push({name:fields[0], email:fields[1], repo:repo[3] + '/' + repo[4], picture:fields[3]});
+                repositories.push({ name: fields[0], email: fields[1], repo: repo[3] + '/' + repo[4], picture: fields[3] });
                 // for (const f of fields) {
                 //     console.log(f);
                 // }
@@ -62,7 +65,7 @@ const functions = {
         const sortBy = pSortBy ? pSortBy : "elapsed";
         const decend = (pOrder == "d") ? true : false;
 
-        repos.sort((a , b) => {
+        repos.sort((a, b) => {
             if (b[sortBy] == a[sortBy]) return 0;
             if (b[sortBy] > a[sortBy]) return decend ? 1 : -1;
             return decend ? -1 : 1;
@@ -73,8 +76,8 @@ const functions = {
     buildDom(dom, repos) {
         const table = document.createElement('table');
         dom.appendChild(table);
-        table.className="repoList";
-        table.id="repoList";
+        table.className = "repoList";
+        table.id = "repoList";
 
         const row = document.createElement('tr');
         table.appendChild(row);
@@ -83,36 +86,36 @@ const functions = {
         th = document.createElement('th');
         row.appendChild(th);
         th.appendChild(document.createTextNode("Name"));
-        th.className="header";
-        th.setAttribute("sortby","name");
+        th.className = "header";
+        th.setAttribute("sortby", "name");
 
         th = document.createElement('th');
         row.appendChild(th);
         th.appendChild(document.createTextNode("email"));
-        th.className="header";
-        th.setAttribute("sortby","email");
+        th.className = "header";
+        th.setAttribute("sortby", "email");
 
         th = document.createElement('th');
         row.appendChild(th);
         th.appendChild(document.createTextNode("Repo"));
-        th.className="header";
-        th.setAttribute("sortby","repo");
+        th.className = "header";
+        th.setAttribute("sortby", "repo");
 
         th = document.createElement('th');
         row.appendChild(th);
         th.appendChild(document.createTextNode("Hours"));
-        th.className="header";
-        th.setAttribute("sortby","elapsed");
+        th.className = "header";
+        th.setAttribute("sortby", "elapsed");
 
 
         th = document.createElement('th');
         row.appendChild(th);
         th.appendChild(document.createTextNode("Date"));
-        th.className="header";
-        th.setAttribute("sortby","lastChanged");
+        th.className = "header";
+        th.setAttribute("sortby", "lastChanged");
 
 
-        repos.forEach( v => {
+        repos.forEach(v => {
 
             const row = document.createElement('tr');
             table.appendChild(row);
@@ -121,42 +124,52 @@ const functions = {
             td = document.createElement('td');
             row.appendChild(td);
             td.appendChild(document.createTextNode(v.name));
-            td.className="name";
-            td.setAttribute("picture",v.picture);
+            td.className = "name";
+            td.setAttribute("picture", v.picture);
 
             td = document.createElement('td');
             row.appendChild(td);
             td.appendChild(document.createTextNode(v.email));
-            td.className="email";
+            td.className = "email";
 
             td = document.createElement('td');
             row.appendChild(td);
             td.appendChild(document.createTextNode(v.repo));
-            td.className="repo";
+            td.className = "repo";
 
             td = document.createElement('td');
             row.appendChild(td);
             td.appendChild(document.createTextNode(v.elapsed));
-            td.className="elapsed";
+            td.className = "elapsed";
 
             td = document.createElement('td');
             row.appendChild(td);
             td.appendChild(document.createTextNode(functions.niceDate(v.lastChanged)));
-            td.className="lastChanged";
+            td.className = "lastChanged";
         });
     },
 
     updateRepositoryLastChanged: async (repos) => {
-        console.log("functions updateRepositoryLastChanged");
-        
-        repos.forEach(async (r) =>  {
-            const data = await functions.fetchRepositoryFromGithub(r.repo);
-            r.lastChanged = functions.lastChanged(data);
-            r.elapsed = functions.hoursSinceNow(r.lastChanged);
-            console.log(r.repo, r.lastChanged, r.elapsed);
-        });
+        // console.log("functions updateRepositoryLastChanged");
 
-        console.log(repos);
+        // const datat = [];
+        await Promise.all(
+            repos.map(async (r, i) => {
+                // console.log(1);
+                const data = await functions.fetchRepositoryFromGithub(r.repo);
+                // console.log(2);
+                r.lastChanged = functions.lastChanged(data);
+                // console.log(3);
+                r.elapsed = functions.hoursSinceNow(r.lastChanged);
+                // console.log(r.repo, r.lastChanged, r.elapsed);
+                return data;
+            })
+        );
+        // console.log('after forEach');
+
+        // await Promise.all(datat);
+
+        // console.log(repos);
     },
 }
 

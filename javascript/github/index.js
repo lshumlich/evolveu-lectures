@@ -7,8 +7,8 @@
 
 */
 import githubFunc from "./functions.js";
-// import * as repoData from "./repositories.js";
-import * as repoData from "./repositoriesTest.js";
+import * as repoData from "./repositories.js";
+// import * as repoData from "./repositoriesTest.js";
 
 const repositories = repoData.repositories;
 const repos = githubFunc.getRepositories(repositories);
@@ -26,7 +26,7 @@ window.onclick = (e) => {
     if (!e.target.className) {
     } else if (e.target.className == 'repo') {
         showRepo(e.target.textContent);
-    } else if (e.target.className == 'lastUpdated') {
+    } else if (e.target.className == 'lastUpdated space') {
         // console.log("you know what you have to do.");
         updateRepositoryLastChanged();
     } else if (e.target.className == 'header') {
@@ -93,11 +93,11 @@ function sortRepos(node) {
 
 async function updateRepositoryLastChanged() {
 
-    console.log("----- index updateRepositoryLastChanged");
+    // console.log("----- index updateRepositoryLastChanged");
     
     await githubFunc.updateRepositoryLastChanged(repos);
     updateRepos();
-    console.log("----- index finished updateRepositoryLastChanged");
+    // console.log("----- index finished updateRepositoryLastChanged");
     
 }
 
