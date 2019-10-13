@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Layout</title>
+    <style>
+        body,
+        header,
+        section,
+        footer,
+        div {
+            /* Change this to a 0 to get rid of scroll bar */
+            border: 2px dotted grey;
+            margin: 0px;
+        }
+        
+        body {
+            display: flex;
+            flex-flow: column;
+            height: 100vh;
+        }
+        
+        header {
+            flex: 0 1 auto;
+        }
+        
+        section {
+            flex: 1 1 auto;
+        }
+        
+        footer {
+            flex: 0 1 40px;
+        }
+        /* ------------ table scrolling -------------- */
+        
+        table {
+            background-color: aquamarine;
+            /* display: flex; */
+            /* overflow: scroll; */
+        }
+        
+        .tab-fixhead-scroll {
+            overflow-y: auto;
+            height: 100px;
+        }
+        
+        .tab-fixhead-scroll thead th {
+            position: sticky;
+            top: 0;
+        }
+        /* Just common table stuff. Really. */
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        th,
+        td {
+            padding: 8px 16px;
+        }
+        
+        th {
+            background: #eee;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        header <br/> header <br/> header <br/>
+    </header>
+
+    <section class="tab-fixhead-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Row 1</th>
+                    <th>Row 2</th>
+                    <th>Row 3</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>value 1 that has a really long thing</td>
+                    <td>value 2</td>
+                    <td>value 3</td>
+                </tr>
+                <tr>
+                    <td>value 1</td>
+                    <td>value 2</td>
+                    <td>value 3</td>
+                </tr>
+                <tr>
+                    <td>value 1</td>
+                    <td>value 2</td>
+                    <td>value 3</td>
+                </tr>
+                <tr>
+                    <td>value 1</td>
+                    <td>value 2</td>
+                    <td>value 3</td>
+                </tr>
+                <tr>
+                    <td>value 1</td>
+                    <td>value 2</td>
+                    <td>value 3</td>
+                </tr>
+                <tr>
+                    <td>value 1</td>
+                    <td>value 2</td>
+                    <td>value 3</td>
+                </tr>
+                <tr>
+                    <td>value 1</td>
+                    <td>value 2</td>
+                    <td>value 3</td>
+                </tr>
+                <tr>
+                    <td>value 1</td>
+                    <td>value 2</td>
+                    <td>value 3</td>
+                </tr>
+                <tr>
+                    <td>value 1</td>
+                    <td>value 2</td>
+                    <td>value 3</td>
+                </tr>
+                <tr>
+                    <td>value 1</td>
+                    <td>value 2</td>
+                    <td>value 3</td>
+                </tr>
+                <tr>
+                    <td>value 1</td>
+                    <td>value 2</td>
+                    <td>value 3</td>
+                </tr>
+                <tr>
+                    <td>value 1</td>
+                    <td>value 2</td>
+                    <td>value 3</td>
+                </tr>
+                <tr>
+                    <td>value 1</td>
+                    <td>value 2</td>
+                    <td>value 3</td>
+                </tr>
+                <tr>
+                    <td>value 1</td>
+                    <td>value 2</td>
+                    <td>value 3</td>
+                </tr>
+                <tr>
+                    <td>value 1</td>
+                    <td>value 2</td>
+                    <td>value 3</td>
+                </tr>
+            </tbody>
+        </table>
+        section
+    </section>
+
+    <footer>
+        footer
+    </footer>
+
+</body>
+
+</html>
