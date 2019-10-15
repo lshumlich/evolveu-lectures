@@ -22,6 +22,10 @@ body {
     background-color: #ddd;
 }
 
+#idRepoList tr:active {
+    background-color: rgb(122, 87, 87);
+}
+
 #idRepoList th {
     padding-top: 12px;
     padding-bottom: 12px;

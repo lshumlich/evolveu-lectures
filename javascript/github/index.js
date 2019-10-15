@@ -13,12 +13,27 @@ import * as repoData from "./repositories.js";
 const repositories = repoData.repositories;
 const repos = githubFunc.getRepositories(repositories);
 let sortColumn = "name";
+let lastSelected;
 
 window.onload = () => {
     startup();
 };
 
 window.onclick = (e) => {
+    const className = e.target.className;
+
+
+    // Add an indicator so you can tell what line you are on.
+    if (className == 'name' ||
+        className == 'repo' ) {
+        if (lastSelected) {
+            lastSelected.bgColor = "";
+        }
+        e.target.bgColor = "#8ed2be";
+        lastSelected = e.target;
+    }
+
+
     if (!e.target.className) {
     } else if (e.target.className == 'repo') {
         showRepo(e.target.textContent);
@@ -66,7 +81,7 @@ function sortRepos(node) {
         // sort in assending order again.
         let sortOrder;
         if (sortColumn == sortBy) {
-             sortOrder = "d";
+            sortOrder = "d";
             sortColumn = "";
         } else {
             sortColumn = sortBy;
@@ -90,7 +105,7 @@ function startup() {
 function showPicture(node) {
     const picture = node.getAttribute("picture");
     var img = document.createElement("IMG");
-    img.className="picture";
+    img.className = "picture";
     img.src = "pictures/" + picture + ".jpg";
     removeChildren(pictureId);
     pictureId.appendChild(img);
