@@ -39,36 +39,3 @@ const fetchTest = async (done) => {
     await fetchFunc.workWithData();
     done();
 }
-
-    // showTime();
-    // test3(done);
-    // fetchFunc.getUsers();
-    // fetchFunc.show(data);
-    // fetchFunc.showNames();
-    // fetchFunc.fetch();
-    // fetchFunc.test2();
-    // expect(getIdArray(groupCard))
-    //     .toEqual(["idAdd", "1", "2", "3", "4"]);
-// });
-
-
-// async function test3(done) {
-    // try {
-    //     const response = await fetch(fetchFunc.url);
-    //     const json = await response.json();
-    //     console.log('Success:', await json);
-    //     done()
-    // } catch (error) {
-    //     console.error('Error:', error);
-    //     done()
-    // }
-// }
-
-// function showTime() {
-//     console.log('One');
-//     setTimeout(function(){
-//         console.log("THIS IS");
-//     }, 2000);
-//     console.log('Two');
-//     console.log('Three');
-// }
