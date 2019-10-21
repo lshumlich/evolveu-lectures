@@ -1,5 +1,6 @@
 /*
 To the instructor, I use: 
+    https://codeshare.io/
     codeshare.io ==> 
     I have a login so I login
     share in daily or session
@@ -124,6 +125,7 @@ const functions = {
 test('emailBuilder test', () => {
     expect(functions.emailBuilder('larry', 'shumlich')).toEqual('l.shumlich@evolveu.ca');
 });
+
 /*
     Make sure the test fails.
 */
@@ -158,6 +160,9 @@ functions.emailBuilder = (fname, lname) => {
 
 
 /* --------------------------------------
+
+
+// I DID NOT RUN THROUGH THIS FROM HERE ON
 
 /*
     Our goal is to write a function called insertIntoArray that will 

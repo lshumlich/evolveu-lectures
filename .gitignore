@@ -31,3 +31,4 @@ __pycache__
 # Special Files
 javascript/github/repositories.js
 javascript/github/pictures
+.vscode
