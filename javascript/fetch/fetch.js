@@ -1,7 +1,8 @@
 
 const functions = {
 
-    url: 'https://uinames.com/api/?amount=10',
+    // url: 'https://uinames.com/api/?amount=10',
+    url: 'https://jsonplaceholder.typicode.com/users',
 
     getFirstName(data) {
         return (data[0].name);
