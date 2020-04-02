@@ -62,9 +62,9 @@ const me = {
     "region": "Canada"
 };
 
-console.log(me);
-const sMe = JSON.stringify(me);
-console.log(sMe);
+// console.log(me);
+// const sMe = JSON.stringify(me);
+// console.log(sMe);
 
 async function postData(url = '', data = {}) {
     // Default options are marked with *

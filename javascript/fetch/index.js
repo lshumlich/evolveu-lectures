@@ -1,8 +1,17 @@
 import fetchFunc from './fetch.js';
 
-fetchFunc.showDelayProblem();
-fetchFunc.showDelaySolution();
+idProblem.addEventListener('click', e => {
+    console.log("before call");
+    fetchFunc.showDelayProblem();
+    console.log("after call");
+});
 
+
+idSolution.addEventListener('click', e => {
+    console.log("before call");
+    fetchFunc.showDelaySolution();
+    console.log("after call");
+});
 
 addEventListener('load', () => {
     // fetchFunc.workWithData();
