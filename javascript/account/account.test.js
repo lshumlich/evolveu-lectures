@@ -1,9 +1,8 @@
-// import b from "./account";
-const account = require('./account');
+import account from "./account";
 
 test('Account functions:', () => {
 	console.log('Hello World');
 	console.log('account:', account);
-	checking = new account.Account(5);
+	const checking = new account.Account(5);
 	console.log('Amount:', checking.balance());
 });

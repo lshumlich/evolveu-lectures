@@ -12,5 +12,4 @@ class Larry {
 
 }
 
-// export default { Account };
-module.exports = {Account, Larry};
+export default { Account };

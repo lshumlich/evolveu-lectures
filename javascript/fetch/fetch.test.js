@@ -32,11 +32,11 @@ test('Test show the timing problem', done => {
 });
 
 test('Test fetch and working with data', done => {
-    fetchTest(done);    // Note this must be an async function
     const fetchTest = async (done) => {
         await fetchFunc.workWithData();
         done();
     }
+    fetchTest(done);    // Note this must be an async function
 });
 
 
